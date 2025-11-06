@@ -1,0 +1,588 @@
+*
+	padding: 0
+	margin: 0
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+
+$responsive-midiumsize: 896px
+$responsive-smallsize: 480px
+
+@mixin font-sansserif
+	font-family: Arial, Helvetica, sans-serif
+
+header
+	background-color: lightcyan
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	z-index: 10
+	@media screen and (max-width:$responsive-smallsize)
+		position: unset
+		width: 100%
+
+ul
+	li
+		list-style: none
+		text-align: left
+
+@mixin div-dualblock0
+	margin: 0 auto
+	box-sizing: border-box
+@mixin div-dualblock1
+	width: 45%
+	vertical-align: top
+	margin: 0 20px
+	box-sizing: border-box
+	@media screen and (max-width:$responsive-midiumsize)
+		width: 85%
+
+@mixin div-pageblock0
+	margin: 0 auto
+	box-sizing: border-box
+@mixin div-pageblock1
+	width: 60%
+	vertical-align: top
+	margin: 0 50px
+	box-sizing: border-box
+	@media screen and (max-width:$responsive-midiumsize)
+		width: 85%
+@mixin div-pageblock2
+	width: 30%
+	vertical-align: top
+	margin: 0 20px
+	box-sizing: border-box
+	@media screen and (max-width:$responsive-midiumsize)
+		width: 85%
+@mixin div-pageblock2-wide
+	width: 50%
+	vertical-align: top
+	margin: 0 10px
+	box-sizing: border-box
+	@media screen and (max-width:$responsive-midiumsize)
+		width: 85%
+
+@mixin div-flexlist0
+	@include div-dualblock0
+	display: flex
+	flex-wrap: wrap
+	justify-content: left
+	margin: 0 auto
+
+@mixin div-flexlist-contents
+	vertical-align: top
+	box-sizing: border-box
+	margin: 0 2.5% 0 3.5%
+	@media screen and (max-width:$responsive-smallsize)
+		width: 100%
+
+@mixin div-flexlist1
+	width: 27%
+	@media screen and (max-width:$responsive-midiumsize)
+		width: 100%
+	@include div-flexlist-contents
+@mixin div-flexlist1-small
+	width: 19%
+	@media screen and (max-width:$responsive-midiumsize)
+		width: 40%
+	@include div-flexlist-contents
+
+@mixin h-boxdesign($bordersize, $bordercolor, $width)
+	border-bottom: $bordersize solid $bordercolor
+	display: inline-block
+	text-align: center
+	width: $width
+	box-sizing: border-box
+
+@mixin a-block($blockcolor, $blockcolor-hover, $block-opacity)
+	text-decoration: none
+	font-style: bold
+	font-family: serif
+	color: white
+	background-color: $blockcolor
+	border-radius: 5px
+	padding: 0 5px
+	display: inline-block
+	box-sizing: border-box
+	opacity: $block-opacity
+	&:hover
+		opacity: $block-opacity
+		background-color: $blockcolor-hover
+		color: darkblue
+	@media screen and (max-width:$responsive-smallsize)
+		padding: 1px
+
+$opacity: 0.65
+
+@mixin medium-font
+	font-size: 21px
+	@media screen and (max-width:$responsive-midiumsize)
+		font-size: 18px
+	@media screen and (max-width:$responsive-smallsize)
+		font-size: 16px
+
+@mixin small-font
+	font-size: 18px
+	@media screen and (max-width:$responsive-midiumsize)
+		font-size: 16px
+	@media screen and (max-width:$responsive-smallsize)
+		font-size: 14px
+
+@mixin smallest-font
+	font-size: 15px
+	@media screen and (max-width:$responsive-midiumsize)
+		font-size: 13px
+	@media screen and (max-width:$responsive-smallsize)
+		font-size: 11px
+
+@mixin smallestlighter-font
+	font-size: 13px
+	font-wight: lighter
+	opacity: 0.75
+	@media screen and (max-width:$responsive-midiumsize)
+		font-size: 11.5px
+	@media screen and (max-width:$responsive-smallsize)
+		font-size: 10px
+
+h1
+	@include font-sansserif
+	font-weight: bold
+	background-size: cover
+	padding-bottom: 15%
+	margin: 100px 0 5px 0
+	text-align: center
+	font-size: 35px
+	width: 100%
+	@media screen and (max-width:$responsive-midiumsize)
+		font-size: 25px
+	@media screen and (max-width:$responsive-smallsize)
+		margin-top: 40px
+	&.h1-noimg
+		background-image: none
+		padding-bottom: 20px
+
+h2
+	@include h-boxdesign(4px, slategrey , 180px)
+	color: darkcyan
+	margin-left: 30px
+	margin-bottom: 30px
+	@include medium-font
+	&.h2-small
+		@include small-font
+		width: 250px
+		@media screen and (max-width:$responsive-midiumsize)
+			width: 250px
+		@media screen and (max-width:$responsive-smallsize)
+			width: 50%
+	&.h2-a-link, &.h2-a-link-commingsoon
+		width: 450px
+		margin: 30px auto 30px 50px
+		@include a-block(darkcyan, cyan, 1.0)
+		display: block
+		@media screen and (max-width:$responsive-midiumsize)
+			width: 75%
+		@media screen and (max-width:$responsive-smallsize)
+			width: 85%
+	&.h2-a-link
+		@include a-block(darkcyan, cyan, 1.0)
+	&.h2-a-link-commingsoon
+		@include a-block(slategray, slategray, $opacity)
+		&:hover
+			opacity: $opacity
+	&.h2-wide
+		@include medium-font
+		width: 320px
+		@media screen and (max-width:$responsive-midiumsize)
+			width: 270px
+		@media screen and (max-width:$responsive-smallsize)
+			width: 220px
+
+h3
+	@include h-boxdesign(3px, darkcyan , 180px)
+	background-color: white
+	font-weight: bold
+	box-shadow: 5px 5px 5px slategrey
+	margin-left: 5px
+	margin-bottom: 20px
+	@include small-font
+	@media screen and (max-width:$responsive-midiumsize)
+		width: 160px
+	@media screen and (max-width:$responsive-smallsize)
+		width: 140px
+	&.h3-small
+		box-shadow: none
+		@media screen and (max-width:$responsive-smallsize)
+	&.h3-a-link, &.h3-a-link-commingsoon
+		width: 275px
+		margin: 15px auto 15px 15px
+		display: inline-block
+		@media screen and (max-width:$responsive-midiumsize)
+		@media screen and (max-width:$responsive-smallsize)
+			width: 85%
+	&.h3-a-link
+		@include a-block(darkcyan, cyan, 1.0)
+	&.h3-a-link-commingsoon
+		@include a-block(slategray, slategray, $opacity)
+		&:hover
+			opacity: $opacity
+	&.h3-wide
+		width: 235px
+		@media screen and (max-width:$responsive-midiumsize)
+			width: 210px
+		@media screen and (max-width:$responsive-smallsize)
+			width: 185px
+
+p
+	@include smallest-font
+	margin: 0 0 12px 0
+	@media screen and (max-width:$responsive-smallsize)
+		margin: 0
+		width: 100%
+	&.p-bold
+		font-weight: bold
+	&.p-small
+		@include smallestlighter-font
+
+span
+	&.p-bold
+		font-weight: bold
+	&.p-small
+		@include smallestlighter-font
+
+a
+	&.a-p
+		font-family: unset
+		font-weight: normal
+		color: darkcyan
+		text-decoration: underline
+		&:hover
+			color: darkblue
+	&:hover
+		opacity: $opacity
+	&.a-link
+		@include smallest-font
+		@include a-block(darkcyan, cyan, 1.0)
+	&.a-link-commingsoon
+		@include smallest-font
+		@include a-block(slategray, slategray, $opacity)
+		&:hover
+			color: white
+	&.a-commingsoon:hover
+		opacity: 1.0
+
+.list0
+	display: block
+	justify-content: left
+
+.list1
+	display: block
+	width: 58%
+	margin: 5px auto auto auto
+	text-align: center
+	@media screen and (max-width:$responsive-midiumsize)
+		width: 85%
+		margin: 15px auto auto auto
+
+.list2
+	display: inline
+	text-align: center
+	width: 100%
+	h3
+		display: inline-block
+		background-color: white
+		font-weight: normal
+		margin-left: 15px
+		width: 65%
+		&.h3-small
+			width: 85%
+			margin: 12px 5px auto auto
+			box-shadow: none
+			@media screen and (max-width:$responsive-smallsize)
+		&.h3-a-link, &.h3-a-link-commingsoon
+			width: 275px
+			margin: 15px auto 15px 15px
+			@media screen and (max-width:$responsive-midiumsize)
+			@media screen and (max-width:$responsive-smallsize)
+				width: 85%
+		&.h3-a-link
+			@include a-block(darkcyan, cyan, 1.0)
+		&.h3-a-link-commingsoon
+			@include a-block(slategray, slategray, $opacity)
+			&:hover
+				opacity: $opacity
+		&.h3-wide
+			width: 85%
+			@media screen and (max-width:$responsive-midiumsize)
+				width: 210px
+			@media screen and (max-width:$responsive-smallsize)
+				width: 185px
+	a
+		margin: 5px 5px
+
+.character0
+	@include div-dualblock0
+	img
+		display: block
+		&.character-img
+			margin-bottom: 20px
+
+.character1
+	@include div-dualblock1
+	display: inline-block
+
+.page0
+	@include div-pageblock0
+	img
+		display: block
+		margin-right: auto
+		margin-left: auto
+.page1
+	@include div-pageblock1
+	display: inline-block
+	iframe
+		display: block
+		width: 100%
+.page2
+	@include div-pageblock2
+	display: inline-block
+.page2-wide
+	@include div-pageblock2-wide
+	display: inline-block
+
+.background0
+	@include div-dualblock0
+	margin: 15px 35px
+	h2
+		vertical-align: top
+		display: block
+		margin: 10px
+		box-sizing: border-box
+.background1
+	@include div-dualblock1
+	display: inline-block
+	margin: 15px 25px auto auto
+
+.character-list0
+	@include div-flexlist0
+.character-list1
+	@include div-flexlist1
+	position: relative
+
+.character-list1-small
+	@include div-flexlist1-small
+	position: relative
+
+.character-list2
+	position: absolute
+	top: -25px
+	left: -15px
+	vertical-align: bottom
+	z-index: 2
+
+.character-list2-credit
+	margin-top: 20px
+	width: 100%
+
+.characterstories-list0
+	width: 85%
+	margin: 0 auto 0 20px
+
+.characterstories-list1
+	width: 100%
+	margin-bottom: 20px
+
+.contents-only
+	@include div-dualblock0
+	margin-bottom: 20px
+
+img
+	&.background-img
+		display: inline-block
+		text-align: center
+		margin: 10px 0
+		width: 80%
+		box-shadow: 6px 6px 4px slategrey
+		vertical-align: top
+		box-sizing: border-box
+		@media screen and (max-width:$responsive-midiumsize)
+			display: block
+			margin: 0 auto
+	&.character-img, &.contents-img
+		display: inline-block
+		text-align: center
+		margin: 0 20px
+		width: 45%
+		box-shadow: 7px 7px 5px slategrey
+		vertical-align: top
+		box-sizing: border-box
+		@media screen and (max-width:$responsive-midiumsize)
+			display: block
+			width: 85%
+			margin: 0 auto
+	&.character-list-img
+		width: 100%
+		object-fit: cover
+		box-shadow: 7px 7px 5px slategrey
+		vertical-align: top
+		margin: 0 0 40px
+		box-sizing: border-box
+		@media screen and (max-width:$responsive-midiumsize)
+			width: 100%
+	&.contents-img
+		@media screen and (max-width:$responsive-midiumsize)
+			display: block
+			margin-bottom: 20px
+
+iframe
+	&.news-iframe
+		display: block
+		margin: 20px auto
+		width: 80%
+		vertical-align: top
+		box-sizing: border-box
+		@media screen and (max-width:$responsive-midiumsize)
+			width: 80%
+	&.contents-iframe
+		display: inline-block
+		text-align: center
+		margin: 0 20px
+		box-shadow: 7px 7px 5px slategrey
+		vertical-align: top
+		box-sizing: border-box
+		@media screen and (max-width:$responsive-midiumsize)
+			display: block
+			width: 85%
+			margin: 0 auto 20px auto
+
+footer
+	text-align: center
+	background-color: lightcyan
+	padding: 18px 0
+	margin-top: 30px
+	width: 100%
+	@include small-font
+	a
+		@include small-font
+		&.a-p
+			@include smallest-font
+		&.a-link
+			@include medium-font
+			width: 135px
+	@media screen and (max-width:$responsive-smallsize)
+		margin-top: 16px
+	p
+		@include smallest-font
+		a
+			@include smallest-font
+
+.block-scroll
+	width: 75%
+	margin: 0 auto 15px
+	max-height: 500px
+	border-top: 1px solid slategrey
+	border-left: 1px solid slategrey
+	box-shadow: 5px 5px 5px slategrey
+	overflow: auto
+	position: relative
+	padding-top: 40px
+	h2
+		display: inline-block
+		margin: auto
+		margin-bottom: 0px
+		width: 270px
+		vertical-align: top
+		display: block
+		box-sizing: border-box
+
+// https://qiita.com/helloworld193/items/9aed3870be1e739c3ad2
+/*ボタン*/
+.hamburger_btn
+	position: fixed
+	/*常に最上部に表示したいので固定*/
+	top: 0
+	right: 0
+	width: 70px
+	height: 72px
+	cursor: pointer
+	z-index: 50
+
+.hamburger_btn .line
+	position: absolute
+	top: 0
+	left: 20px
+	width: 32px
+	height: 2px
+	background: darkcyan
+	text-align: center
+
+.hamburger_btn .line_01
+	top: 16px
+	transition: 0.4s ease
+
+.hamburger_btn .line_02
+	top: 26px
+	transition: 0.4s ease
+
+.hamburger_btn .line_03
+	top: 36px
+	transition: 0.4s ease
+
+.btn_line01
+	transform: translateY(10px) rotate(-45deg)
+	transition: 0.4s ease
+
+.btn_line02
+	transition: 0.4s ease
+	opacity: 0
+
+.btn_line03
+	transform: translateY(-10px) rotate(45deg)
+	transition: 0.4s ease
+
+/*サイドバー*/
+.menu-enter-active, .menu-leave-active
+	transition: opacity 0.4s
+
+.menu-enter, .menu-leave-to
+	opacity: 0
+
+.menu-leave, .menu-enter-to
+	opacity: 1
+
+.menu
+	background-color: rgba(197, 197, 197, 0.671)
+	z-index: 30
+	padding: 2rem 1rem
+	position: fixed
+	width: 20rem
+	height: 80rem
+	top: 0
+	right: 0
+	li
+		list-style: none
+		line-height: 1
+		padding: 1em
+		@include smallest-font
+		@media screen and (max-width:$responsive-smallsize)
+			list-style: none
+			line-height: 1
+			padding: 0.75em
+	a
+		color: black
+		text-decoration: none
+		font-size: 1.2em
+		font-weight: bold
+		padding: 0
+		@media screen and (max-width:$responsive-smallsize)
+			color: black
+			text-decoration: none
+			font-size: 1em
+			font-weight: bold
+			padding: 0
+		&:hover
+			color: darkcyan
+			opacity: 1.0
+			@media screen and (max-width:$responsive-smallsize)
+				color: darkcyan
+	ul
+		margin: 1em
+		padding: 0
