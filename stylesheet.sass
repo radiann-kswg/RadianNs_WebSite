@@ -1,25 +1,61 @@
 *
 	padding: 0
 	margin: 0
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+	font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif
+	box-sizing: border-box
 
+// カラーパレット（参考サイトに合わせた紺色・白色基調）
+$primary-navy: #1a2332
+$secondary-navy: #2c3e50
+$light-navy: #34495e
+$accent-blue: #3498db
+$light-blue: #5dade2
+$pure-white: #ffffff
+$light-gray: #f8f9fa
+$medium-gray: #6c757d
+$border-gray: #dee2e6
+$text-dark: #2c3e50
+$shadow-color: rgba(26, 35, 50, 0.1)
+
+// レスポンシブブレークポイント
 $responsive-midiumsize: 896px
 $responsive-smallsize: 480px
 
 @mixin font-sansserif
-	font-family: Arial, Helvetica, sans-serif
+	font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif
+
+body
+	background: linear-gradient(135deg, $pure-white 0%, $light-gray 100%)
+	color: $text-dark
+	line-height: 1.6
+	min-height: 100vh
 
 header
-	background-color: lightcyan
+	background: rgba($pure-white, 0.95)
+	backdrop-filter: blur(10px)
+	border-bottom: 1px solid $border-gray
+	box-shadow: 0 2px 10px $shadow-color
 	position: fixed
 	top: 0
 	left: 0
 	width: 100%
-	z-index: 10
+	z-index: 1000
+	padding: 10px 0
 	@media screen and (max-width:$responsive-smallsize)
-		position: unset
+		position: relative
 		width: 100%
+		padding: 5px 0
 
+img
+	display: block
+	margin: 10px auto
+	width: 85%
+	box-shadow: 6px 6px 4px slategrey
+	vertical-align: top
+	box-sizing: border-box
+	@media screen and (max-width:$responsive-midiumsize)
+		display: block
+		margin: 0 auto
 ul
 	li
 		list-style: none
@@ -93,25 +129,75 @@ ul
 	width: $width
 	box-sizing: border-box
 
-@mixin a-block($blockcolor, $blockcolor-hover, $block-opacity)
-	text-decoration: none
-	font-style: bold
-	font-family: serif
-	color: white
-	background-color: $blockcolor
-	border-radius: 5px
-	padding: 0 5px
+// モダンなボタンスタイル
+@mixin modern-button($bg-color, $hover-color, $text-color: $pure-white)
 	display: inline-block
-	box-sizing: border-box
+	padding: 12px 24px
+	margin: 8px 4px
+	background: linear-gradient(135deg, $bg-color 0%, lighten($bg-color, 10%) 100%)
+	color: $text-color
+	text-decoration: none
+	border-radius: 25px
+	box-shadow: 0 4px 15px rgba($bg-color, 0.3)
+	transition: all 0.3s ease
+	font-weight: 600
+	font-size: 0.9rem
+	border: none
+	cursor: pointer
+	&:hover
+		transform: translateY(-2px)
+		box-shadow: 0 8px 25px rgba($hover-color, 0.4)
+		background: linear-gradient(135deg, $hover-color 0%, lighten($hover-color, 15%) 100%)
+		text-decoration: none
+	&:active
+		transform: translateY(0)
+		box-shadow: 0 2px 10px rgba($bg-color, 0.4)
+	@media screen and (max-width:$responsive-smallsize)
+		padding: 10px 20px
+		font-size: 0.85rem
+
+@mixin a-block($blockcolor, $blockcolor-hover, $block-opacity)
+	display: inline-block
+	padding: 12px 24px
+	margin: 8px 4px
+	background: linear-gradient(135deg, $blockcolor 0%, lighten($blockcolor, 10%) 100%)
+	color: $pure-white
+	text-decoration: none
+	border-radius: 25px
+	box-shadow: 0 4px 15px rgba($blockcolor, 0.3)
+	transition: all 0.3s ease
+	font-weight: 600
+	font-size: 0.9rem
+	border: none
+	cursor: pointer
 	opacity: $block-opacity
 	&:hover
-		opacity: $block-opacity
-		background-color: $blockcolor-hover
-		color: darkblue
+		transform: translateY(-2px)
+		box-shadow: 0 8px 25px rgba($blockcolor-hover, 0.4)
+		background: linear-gradient(135deg, $blockcolor-hover 0%, lighten($blockcolor-hover, 15%) 100%)
+		text-decoration: none
+		opacity: 1.0
+	&:active
+		transform: translateY(0)
+		box-shadow: 0 2px 10px rgba($blockcolor, 0.4)
 	@media screen and (max-width:$responsive-smallsize)
-		padding: 1px
+		padding: 10px 20px
+		font-size: 0.85rem
 
-$opacity: 0.65
+// カードデザインmixin
+@mixin card-style
+	background: $pure-white
+	border-radius: 15px
+	box-shadow: 0 8px 25px $shadow-color
+	padding: 25px
+	margin: 20px 0
+	border: 1px solid $border-gray
+	transition: all 0.3s ease
+	&:hover
+		transform: translateY(-5px)
+		box-shadow: 0 15px 40px rgba($primary-navy, 0.15)
+
+$opacity: 0.8
 
 @mixin medium-font
 	font-size: 21px
@@ -136,7 +222,7 @@ $opacity: 0.65
 
 @mixin smallestlighter-font
 	font-size: 13px
-	font-wight: lighter
+	font-weight: lighter
 	opacity: 0.75
 	@media screen and (max-width:$responsive-midiumsize)
 		font-size: 11.5px
@@ -145,56 +231,66 @@ $opacity: 0.65
 
 h1
 	@include font-sansserif
-	font-weight: bold
-	background-size: cover
-	padding-bottom: 15%
-	margin: 100px 0 5px 0
+	font-weight: 700
+	background: linear-gradient(135deg, $primary-navy 0%, $accent-blue 100%)
+	-webkit-background-clip: text
+	-webkit-text-fill-color: transparent
+	background-clip: text
+	padding: 120px 20px 40px
+	margin: 0 0 30px 0
 	text-align: center
-	font-size: 35px
+	font-size: clamp(2rem, 5vw, 3.5rem)
 	width: 100%
-	@media screen and (max-width:$responsive-midiumsize)
-		font-size: 25px
+	position: relative
+	&::after
+		content: ""
+		position: absolute
+		bottom: 15px
+		left: 50%
+		transform: translateX(-50%)
+		width: 100px
+		height: 4px
+		background: linear-gradient(90deg, $accent-blue, $light-blue)
+		border-radius: 2px
 	@media screen and (max-width:$responsive-smallsize)
-		margin-top: 40px
+		padding-top: 80px
+		font-size: 2rem
 	&.h1-noimg
-		background-image: none
-		padding-bottom: 20px
+		padding-bottom: 30px
 
 h2
-	@include h-boxdesign(4px, slategrey , 180px)
-	color: darkcyan
-	margin-left: 30px
-	margin-bottom: 30px
-	@include medium-font
+	@include font-sansserif
+	color: $primary-navy
+	font-weight: 600
+	font-size: clamp(1.2rem, 3vw, 1.8rem)
+	margin: 30px 0 20px 0
+	padding: 15px 20px
+	background: linear-gradient(135deg, $pure-white 0%, $light-gray 100%)
+	border-left: 5px solid $accent-blue
+	border-radius: 8px
+	box-shadow: 0 4px 15px $shadow-color
 	&.h2-small
-		@include small-font
-		width: 250px
-		@media screen and (max-width:$responsive-midiumsize)
-			width: 250px
-		@media screen and (max-width:$responsive-smallsize)
-			width: 50%
+		font-size: clamp(1rem, 2.5vw, 1.4rem)
+		padding: 12px 18px
 	&.h2-a-link, &.h2-a-link-commingsoon
-		width: 450px
-		margin: 30px auto 30px 50px
-		@include a-block(darkcyan, cyan, 1.0)
+		@include modern-button($accent-blue, $light-blue)
+		width: auto
+		max-width: 450px
+		text-align: center
 		display: block
+		margin: 30px auto
 		@media screen and (max-width:$responsive-midiumsize)
-			width: 75%
+			max-width: 75%
 		@media screen and (max-width:$responsive-smallsize)
-			width: 85%
-	&.h2-a-link
-		@include a-block(darkcyan, cyan, 1.0)
+			max-width: 85%
 	&.h2-a-link-commingsoon
-		@include a-block(slategray, slategray, $opacity)
+		@include modern-button($medium-gray, lighten($medium-gray, 10%))
+		cursor: not-allowed
 		&:hover
-			opacity: $opacity
+			transform: none
+			box-shadow: 0 4px 15px rgba($medium-gray, 0.3)
 	&.h2-wide
-		@include medium-font
-		width: 320px
-		@media screen and (max-width:$responsive-midiumsize)
-			width: 270px
-		@media screen and (max-width:$responsive-smallsize)
-			width: 220px
+		padding: 15px 25px
 
 h3
 	@include h-boxdesign(3px, darkcyan , 180px)
@@ -249,38 +345,48 @@ span
 		@include smallestlighter-font
 
 a
+	transition: all 0.3s ease
 	&.a-p
-		font-family: unset
-		font-weight: normal
-		color: darkcyan
-		text-decoration: underline
+		color: $accent-blue
+		text-decoration: none
+		border-bottom: 1px dotted $accent-blue
 		&:hover
-			color: darkblue
-	&:hover
-		opacity: $opacity
+			color: $light-blue
+			border-bottom-color: $light-blue
 	&.a-link
+		@include modern-button($accent-blue, $light-blue)
 		@include smallest-font
-		@include a-block(darkcyan, cyan, 1.0)
+		padding: 8px 16px
+		margin: 4px 2px
 	&.a-link-commingsoon
+		@include modern-button($medium-gray, lighten($medium-gray, 10%))
 		@include smallest-font
-		@include a-block(slategray, slategray, $opacity)
+		padding: 8px 16px
+		margin: 4px 2px
+		cursor: not-allowed
 		&:hover
-			color: white
-	&.a-commingsoon:hover
-		opacity: 1.0
+			transform: none
 
 .list0
-	display: block
-	justify-content: left
+	display: flex
+	flex-direction: column
+	gap: 15px
+	margin: 0 auto
+	max-width: 1200px
+	padding: 0 20px
 
 .list1
-	display: block
-	width: 58%
-	margin: 5px auto auto auto
-	text-align: center
+	@include card-style
+	width: 100%
+	max-width: 800px
+	margin: 0 auto 20px
+	text-align: left
 	@media screen and (max-width:$responsive-midiumsize)
-		width: 85%
-		margin: 15px auto auto auto
+		margin: 0 auto 15px
+		padding: 20px
+	@media screen and (max-width:$responsive-smallsize)
+		padding: 15px
+		margin: 0 auto 10px
 
 .list2
 	display: inline
@@ -455,134 +561,456 @@ iframe
 
 footer
 	text-align: center
-	background-color: lightcyan
-	padding: 18px 0
-	margin-top: 30px
+	background: linear-gradient(135deg, $primary-navy 0%, $secondary-navy 100%)
+	color: $pure-white
+	padding: 40px 20px 20px
+	margin-top: 60px
 	width: 100%
+	position: relative
+	&::before
+		content: ""
+		position: absolute
+		top: 0
+		left: 50%
+		transform: translateX(-50%)
+		width: 100px
+		height: 4px
+		background: linear-gradient(90deg, $accent-blue, $light-blue)
+		border-radius: 2px
 	@include small-font
 	a
-		@include small-font
+		color: $light-blue
 		&.a-p
 			@include smallest-font
 		&.a-link
+			@include modern-button($accent-blue, $light-blue)
 			@include medium-font
-			width: 135px
+			margin: 5px
 	@media screen and (max-width:$responsive-smallsize)
-		margin-top: 16px
+		margin-top: 40px
+		padding: 30px 15px 15px
 	p
 		@include smallest-font
+		opacity: 0.9
+		margin-bottom: 10px
 		a
 			@include smallest-font
+			color: $light-blue
 
 .block-scroll
-	width: 75%
-	margin: 0 auto 15px
-	max-height: 500px
-	border-top: 1px solid slategrey
-	border-left: 1px solid slategrey
-	box-shadow: 5px 5px 5px slategrey
-	overflow: auto
+	width: 90%
+	max-width: 1000px
+	margin: 0 auto 30px
+	max-height: 600px
+	background: $pure-white
+	border: 1px solid $border-gray
+	border-radius: 15px
+	box-shadow: 0 10px 30px $shadow-color
+	overflow: hidden
 	position: relative
-	padding-top: 40px
+	&::-webkit-scrollbar
+		width: 8px
+	&::-webkit-scrollbar-track
+		background: $light-gray
+		border-radius: 4px
+	&::-webkit-scrollbar-thumb
+		background: linear-gradient(135deg, $accent-blue, $light-blue)
+		border-radius: 4px
+		&:hover
+			background: linear-gradient(135deg, $light-blue, $accent-blue)
+	.scroll-content
+		max-height: 600px
+		overflow-y: auto
+		padding: 30px
 	h2
-		display: inline-block
-		margin: auto
-		margin-bottom: 0px
-		width: 270px
-		vertical-align: top
-		display: block
-		box-sizing: border-box
+		color: $primary-navy
+		margin: 20px 0
+		padding: 15px 0
+		border-bottom: 2px solid $border-gray
+		text-align: center
+		font-weight: 600
 
 // https://qiita.com/helloworld193/items/9aed3870be1e739c3ad2
-/*ボタン*/
+// モダンなハンバーガーメニューボタン
 .hamburger_btn
 	position: fixed
-	/*常に最上部に表示したいので固定*/
-	top: 0
-	right: 0
-	width: 70px
-	height: 72px
+	top: 15px
+	right: 20px
+	width: 50px
+	height: 50px
 	cursor: pointer
-	z-index: 50
+	z-index: 1001
+	background: rgba($pure-white, 0.95)
+	border-radius: 50%
+	box-shadow: 0 4px 15px $shadow-color
+	backdrop-filter: blur(10px)
+	display: flex
+	align-items: center
+	justify-content: center
+	transition: all 0.3s ease
+	&:hover
+		transform: scale(1.1)
+		box-shadow: 0 6px 20px rgba($primary-navy, 0.2)
 
 .hamburger_btn .line
 	position: absolute
-	top: 0
-	left: 20px
-	width: 32px
+	width: 24px
 	height: 2px
-	background: darkcyan
-	text-align: center
+	background: $primary-navy
+	border-radius: 1px
+	transition: all 0.3s ease
 
 .hamburger_btn .line_01
-	top: 16px
-	transition: 0.4s ease
+	top: 18px
+	transition: 0.3s ease
 
 .hamburger_btn .line_02
-	top: 26px
-	transition: 0.4s ease
+	top: 24px
+	transition: 0.3s ease
 
 .hamburger_btn .line_03
-	top: 36px
-	transition: 0.4s ease
+	top: 30px
+	transition: 0.3s ease
 
 .btn_line01
-	transform: translateY(10px) rotate(-45deg)
-	transition: 0.4s ease
+	transform: translateY(6px) rotate(-45deg)
+	transition: 0.3s ease
 
 .btn_line02
-	transition: 0.4s ease
+	transition: 0.3s ease
 	opacity: 0
 
 .btn_line03
-	transform: translateY(-10px) rotate(45deg)
-	transition: 0.4s ease
+	transform: translateY(-6px) rotate(45deg)
+	transition: 0.3s ease
 
-/*サイドバー*/
+// モダンなサイドバーメニュー
 .menu-enter-active, .menu-leave-active
-	transition: opacity 0.4s
+	transition: all 0.3s ease
 
 .menu-enter, .menu-leave-to
 	opacity: 0
+	transform: translateX(100%)
 
 .menu-leave, .menu-enter-to
 	opacity: 1
+	transform: translateX(0%)
 
 .menu
-	background-color: rgba(197, 197, 197, 0.671)
-	z-index: 30
-	padding: 2rem 1rem
+	background: rgba($pure-white, 0.95)
+	backdrop-filter: blur(20px)
+	border-left: 1px solid $border-gray
+	box-shadow: -10px 0 30px $shadow-color
+	z-index: 1000
+	padding: 80px 0 2rem
 	position: fixed
-	width: 20rem
-	height: 80rem
+	width: min(300px, 80vw)
+	height: 100vh
 	top: 0
 	right: 0
+	overflow-y: auto
 	li
 		list-style: none
-		line-height: 1
-		padding: 1em
-		@include smallest-font
-		@media screen and (max-width:$responsive-smallsize)
-			list-style: none
-			line-height: 1
-			padding: 0.75em
+		padding: 0
+		margin: 0
+		border-bottom: 1px solid $border-gray
+		&:last-child
+			border-bottom: none
 	a
-		color: black
+		display: block
+		color: $text-dark
 		text-decoration: none
-		font-size: 1.2em
-		font-weight: bold
-		padding: 0
-		@media screen and (max-width:$responsive-smallsize)
-			color: black
-			text-decoration: none
-			font-size: 1em
-			font-weight: bold
-			padding: 0
+		font-size: 1rem
+		font-weight: 500
+		padding: 1.2rem 1.5rem
+		transition: all 0.3s ease
+		border-left: 3px solid transparent
 		&:hover
-			color: darkcyan
-			opacity: 1.0
-			@media screen and (max-width:$responsive-smallsize)
-				color: darkcyan
+			color: $accent-blue
+			background: linear-gradient(135deg, $light-gray 0%, rgba($accent-blue, 0.1) 100%)
+			border-left-color: $accent-blue
+			transform: translateX(5px)
+		@media screen and (max-width:$responsive-smallsize)
+			font-size: 0.9rem
+			padding: 1rem 1.2rem
 	ul
-		margin: 1em
+		margin: 0
 		padding: 0
+
+// お問い合わせフォームのスタイル
+.contact-section
+	background: linear-gradient(135deg, $light-gray 0%, $pure-white 100%)
+	padding: 60px 20px
+	margin: 0
+
+.contact-container
+	max-width: 800px
+	margin: 0 auto
+
+.contact-title
+	text-align: center
+	color: $primary-navy
+	font-size: clamp(1.8rem, 4vw, 2.5rem)
+	margin-bottom: 20px
+	font-weight: 700
+
+.contact-description
+	text-align: center
+	color: $medium-gray
+	font-size: 1.1rem
+	margin-bottom: 40px
+	line-height: 1.6
+
+.contact-form
+	@include card-style
+	max-width: 100%
+	position: relative
+	&.form-loading
+		pointer-events: none
+		opacity: 0.7
+
+.form-row
+	display: grid
+	grid-template-columns: 1fr 1fr
+	gap: 20px
+	@media screen and (max-width: $responsive-smallsize)
+		grid-template-columns: 1fr
+
+.form-group
+	margin-bottom: 25px
+
+.form-label
+	display: block
+	color: $text-dark
+	font-weight: 600
+	margin-bottom: 8px
+	font-size: 0.95rem
+
+.required
+	color: #e74c3c
+	font-weight: bold
+
+.form-input, .form-select, .form-textarea
+	width: 100%
+	padding: 12px 16px
+	border: 2px solid $border-gray
+	border-radius: 8px
+	font-size: 1rem
+	transition: all 0.3s ease
+	background: $pure-white
+	&:focus
+		outline: none
+		border-color: $accent-blue
+		box-shadow: 0 0 0 3px rgba($accent-blue, 0.1)
+	&.error
+		border-color: #e74c3c
+		box-shadow: 0 0 0 3px rgba(#e74c3c, 0.1)
+	&::placeholder
+		color: $medium-gray
+
+.form-textarea
+	resize: vertical
+	min-height: 120px
+	font-family: inherit
+
+.char-count
+	text-align: right
+	font-size: 0.85rem
+	color: $medium-gray
+	margin-top: 5px
+
+.checkbox-group
+	.checkbox-label
+		display: flex
+		align-items: flex-start
+		gap: 12px
+		cursor: pointer
+		font-size: 0.95rem
+		line-height: 1.5
+
+.form-checkbox
+	position: relative
+	width: 20px
+	height: 20px
+	margin: 0
+	opacity: 0
+	cursor: pointer
+
+.checkmark
+	position: absolute
+	top: 0
+	left: 0
+	width: 20px
+	height: 20px
+	background: $pure-white
+	border: 2px solid $border-gray
+	border-radius: 4px
+	transition: all 0.3s ease
+	&::after
+		content: ""
+		position: absolute
+		display: none
+		left: 6px
+		top: 2px
+		width: 6px
+		height: 10px
+		border: solid $pure-white
+		border-width: 0 2px 2px 0
+		transform: rotate(45deg)
+
+.form-checkbox:checked + .checkmark
+	background: $accent-blue
+	border-color: $accent-blue
+	&::after
+		display: block
+
+.privacy-link
+	color: $accent-blue
+	text-decoration: none
+	&:hover
+		text-decoration: underline
+
+.error-message
+	display: block
+	color: #e74c3c
+	font-size: 0.85rem
+	margin-top: 5px
+
+.form-actions
+	text-align: center
+	margin-top: 30px
+
+.submit-btn
+	@include modern-button($primary-navy, $secondary-navy)
+	font-size: 1.1rem
+	padding: 15px 40px
+	border: none
+	cursor: pointer
+	&:disabled
+		cursor: not-allowed
+		opacity: 0.6
+		&:hover
+			transform: none
+
+.loading-text
+	display: flex
+	align-items: center
+	gap: 10px
+
+.spinner
+	width: 20px
+	height: 20px
+	border: 2px solid rgba($pure-white, 0.3)
+	border-radius: 50%
+	border-top-color: $pure-white
+	animation: spin 1s ease-in-out infinite
+
+@keyframes spin
+	to
+		transform: rotate(360deg)
+
+.success-message, .error-alert
+	@include card-style
+	text-align: center
+	margin-top: 30px
+
+.success-message
+	border-left: 5px solid #27ae60
+	h3
+		color: #27ae60
+		margin-bottom: 10px
+	p
+		color: $medium-gray
+
+.error-alert
+	border-left: 5px solid #e74c3c
+	position: relative
+	h3
+		color: #e74c3c
+		margin-bottom: 10px
+	p
+		color: $medium-gray
+
+.success-icon, .error-icon
+	font-size: 3rem
+	margin-bottom: 15px
+
+.success-icon
+	color: #27ae60
+
+.error-icon
+	color: #e74c3c
+
+.close-btn
+	position: absolute
+	top: 15px
+	right: 15px
+	background: none
+	border: none
+	font-size: 1.2rem
+	cursor: pointer
+	color: $medium-gray
+	&:hover
+		color: #e74c3c
+
+// モーダルのスタイル
+.modal-overlay
+	position: fixed
+	top: 0
+	left: 0
+	width: 100vw
+	height: 100vh
+	background: rgba($primary-navy, 0.8)
+	backdrop-filter: blur(5px)
+	z-index: 2000
+	display: flex
+	align-items: center
+	justify-content: center
+	padding: 20px
+
+.modal-content
+	background: $pure-white
+	border-radius: 15px
+	max-width: 600px
+	width: 100%
+	max-height: 80vh
+	overflow-y: auto
+	box-shadow: 0 20px 60px rgba($primary-navy, 0.3)
+
+.modal-header
+	display: flex
+	justify-content: space-between
+	align-items: center
+	padding: 25px 30px
+	border-bottom: 1px solid $border-gray
+	h3
+		color: $primary-navy
+		margin: 0
+		font-size: 1.5rem
+
+.modal-close
+	background: none
+	border: none
+	font-size: 1.5rem
+	cursor: pointer
+	color: $medium-gray
+	&:hover
+		color: $primary-navy
+
+.modal-body
+	padding: 30px
+	h4
+		color: $primary-navy
+		margin-top: 25px
+		margin-bottom: 15px
+		&:first-child
+			margin-top: 0
+	p
+		color: $text-dark
+		line-height: 1.6
+		margin-bottom: 15px
+	ul
+		padding-left: 20px
+		li
+			color: $text-dark
+			margin-bottom: 8px
