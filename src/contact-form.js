@@ -125,10 +125,11 @@ const contactFormComponent = {
           <ul>
             <li>お問い合わせへの回答</li>
             <li>必要に応じた追加のご連絡</li>
+            <li>倫理的トラブル発生時の行政機関による仲裁</li>
           </ul>
-          <p>ご提供いただいた個人情報は適切に管理し、第三者に提供することはありません。</p>
+          <p>ご提供いただいた個人情報は適切に管理し、法令順守の下で第三者に提供することはありません。ただし、お問い合わせにより万が一倫理的トラブルの恐れがある場合に限り、行政機関へ共有することがあります。</p>
           <h4>お問い合わせ内容の保存期間</h4>
-          <p>お問い合わせ内容は回答後、1年間保存し、その後削除いたします。</p>
+          <p>お問い合わせ内容は回答後1年保存し、その後 個人情報にあたる箇所を削除いたします。</p>
         </div>
       </div>
     </div>
@@ -213,7 +214,7 @@ const contactFormComponent = {
     async submitForm() {
       // この部分は設定ファイルの内容に応じて実装されます
       // デモ用の実装（実際は外部サービスやサーバーに送信）
-  		const response = await fetch('hhttps://formspree.io/f/mzznvbdl', {
+  		const response = await fetch('https://formspree.io/f/mzznvbdl', {
     		method: 'POST',
     		headers: {
       			'Content-Type': 'application/json'
