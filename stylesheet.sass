@@ -819,25 +819,45 @@ footer
 	color: $medium-gray
 	margin-top: 5px
 
+// お問い合わせフォーム - 強制スタイル適用
+.contact-form
+	.checkbox-group
+		.checkbox-label
+			display: flex !important
+			align-items: center !important
+			justify-content: flex-start
+			gap: 12px
+			cursor: pointer
+			font-size: 0.95rem
+			line-height: 1.5
+			min-height: 24px
+			vertical-align: middle
+
 .checkbox-group
 	.checkbox-label
-		display: flex
-		align-items: flex-start
+		display: flex !important
+		align-items: center !important
 		gap: 12px
 		cursor: pointer
 		font-size: 0.95rem
 		line-height: 1.5
+		min-height: 24px
+		vertical-align: middle
 
+.contact-form .form-checkbox,
 .form-checkbox
 	position: relative
 	width: 20px
 	height: 20px
-	margin: 0
+	margin: 0 !important
 	opacity: 0
 	cursor: pointer
+	flex-shrink: 0
+	align-self: center
 
+.contact-form .checkmark,
 .checkmark
-	position: absolute
+	position: relative
 	top: 0
 	left: 0
 	width: 20px
@@ -846,6 +866,8 @@ footer
 	border: 2px solid $border-gray
 	border-radius: 4px
 	transition: all 0.3s ease
+	flex-shrink: 0
+	align-self: center
 	&::after
 		content: ""
 		position: absolute
