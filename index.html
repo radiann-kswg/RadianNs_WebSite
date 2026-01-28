@@ -5,20 +5,27 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<!-- セキュリティヘッダー -->
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://unpkg.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; frame-src 'none'; object-src 'none'; base-uri 'self';">
+	<!-- セキュリティヘッダー（GitHub Pages対応版） -->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; object-src 'none'; base-uri 'self';">
 	<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 	<meta http-equiv="X-Content-Type-Options" content="nosniff">
-	<meta http-equiv="X-Frame-Options" content="DENY">
 	<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 
 	<!-- スタイルシート -->
 	<link rel="stylesheet" href="/stylesheet.css">
-	<link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css' integrity="sha384-vEecDJeJ0PSWkGdSuJ6tGWHhH1cCWYJJE2cJ5cJ6cC2o4u4EIqe6E4wDhB6vA9aY" crossorigin="anonymous">
+	<link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css' crossorigin="anonymous">
 
 	<!-- JavaScript -->
-	<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13" integrity="sha384-qR5EKPcgZGnL7eHMfS2e6QkFGKsH7EqFl1l8sN8jE8wB9t4M9r6J3c5d2a1f7g8h" crossorigin="anonymous"></script>
-	<script>window.Vue || document.write('<script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js" integrity="sha384-X9FtfzN2l4P3H7z8J2c4K5D9G3f1L2i8J7C6V5x1Y0z4M3N6L8q9T2w1E7r8U3b" crossorigin="anonymous"><\/script>');</script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13" crossorigin="anonymous"></script>
+	<script>
+		// Vue.jsのフォールバック読み込み（document.writeを避ける）
+		if (!window.Vue) {
+			const script = document.createElement('script');
+			script.src = 'https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js';
+			script.crossOrigin = 'anonymous';
+			document.head.appendChild(script);
+		}
+	</script>
 	<title>ラジアン(柏木主税)/百花繚乱研究所 - TOP</title>
 	<meta name="description" content="こちらは、一次創作クリエイター「ラジアン(柏木主税)」および一次創作サークル「百花繚乱研究所」の公式ページです">
 	<meta name=”keywords” content=”百花繚乱研究所,ラジアン(柏木主税)”>
