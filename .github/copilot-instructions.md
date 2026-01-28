@@ -40,6 +40,10 @@ RadianNs_WebSite/
 │   ├── index.html             # プライベートページ
 │   └── contact-form-setup.md  # お問い合わせフォーム設定ガイド
 │
+├── _work_in_progress/                    # 進捗状況ドキュメント
+│   ├── SECURITY.md            # セキュリティ関連進捗
+│   └── *.md                   # Copilot作業進捗・説明用マークダウン
+│
 └── .github/                    # GitHub設定
     └── copilot-instructions.md # この指示書
 ```
@@ -211,6 +215,13 @@ const componentName = {
 - コミット前に `stylesheet.css` が更新されていることを確認
 
 ## 開発ワークフロー
+
+### 進捗状況ドキュメント管理
+
+- **Copilot作業進捗**: `_work_in_progress/` フォルダに格納
+- **進捗説明用マークダウン**: 作業内容、課題、解決策をマークダウンで記録
+- **セキュリティ関連**: `SECURITY.md` など重要ドキュメントも同フォルダで管理
+- **命名規則**: 日付やタスク名を含む分かりやすいファイル名を使用
 
 ### 新機能追加時
 

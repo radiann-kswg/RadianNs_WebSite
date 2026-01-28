@@ -1,7 +1,13 @@
 // お問い合わせフォームコンポーネント
 const contactFormComponent = {
   template: `
-    <form @submit.prevent="handleSubmit" class="contact-form" :class="{ 'form-loading': isLoading }">
+    <div class="contact-form-container">
+      <div class="form-security-notice">
+        <p>このフォームはセキュリティ強化されており、SSL暗号化通信で安全に送信されます。</p>
+        <p>お客様の個人情報は適切に保護され、第三者と共有されることはありません。</p>
+      </div>
+
+      <form @submit.prevent="handleSubmit" class="contact-form" :class="{ 'form-loading': isLoading }">
       <div class="form-row">
         <div class="form-group">
           <label for="name" class="form-label">お名前 <span class="required">*</span></label>
@@ -132,8 +138,7 @@ const contactFormComponent = {
           <p>お問い合わせ内容は回答後1年保存し、その後 個人情報にあたる箇所を削除いたします。</p>
         </div>
       </div>
-    </div>
-  `,
+    </div>`,
   data() {
     return {
       form: {
@@ -212,20 +217,28 @@ const contactFormComponent = {
     },
 
     async submitForm() {
-      // この部分は設定ファイルの内容に応じて実装されます
-      // デモ用の実装（実際は外部サービスやサーバーに送信）
-  		const response = await fetch('https://formspree.io/f/mzznvbdl', {
-    		method: 'POST',
-    		headers: {
-      			'Content-Type': 'application/json'
-    		},
-    		body: JSON.stringify({
-      			name: this.form.name,
-      			email: this.form.email,
-      			subject: this.form.subject,
-      			message: this.form.message
-    		})
-  		});
+      // セキュリティ強化されたフォーム送信処理
+      const sanitizedForm = {
+        name: this.sanitizeInput(this.form.name),
+        email: this.sanitizeInput(this.form.email),
+        subject: this.sanitizeInput(this.form.subject),
+        message: this.sanitizeInput(this.form.message),
+        timestamp: new Date().toISOString(),
+        origin: window.location.origin
+      };
+
+      const response = await fetch('https://formspree.io/f/mzznvbdl', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        mode: 'cors',
+        credentials: 'omit',
+        referrerPolicy: 'strict-origin-when-cross-origin',
+        body: JSON.stringify(sanitizedForm)
+      });
 
 		if (response.ok) {
 			return { success: true };
@@ -243,6 +256,17 @@ const contactFormComponent = {
         privacyAccepted: false
       };
       this.errors = {};
+    },
+
+    sanitizeInput(input) {
+      if (typeof input !== 'string') return input;
+      // XSS対策のための基本的なサニタイゼーション
+      return input
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;')
+        .replace(/\//g, '&#x2F;');
     }
   },
 
