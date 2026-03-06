@@ -630,47 +630,55 @@ footer
 		text-align: center
 		font-weight: 600
 
-// https://qiita.com/helloworld193/items/9aed3870be1e739c3ad2
+// https://qiita.com/helloworld193/items/9aed3870be1e739c3ad2 (改変済)
 // モダンなハンバーガーメニューボタン
 .hamburger_btn
 	position: fixed
 	top: 15px
 	right: 20px
-	width: 50px
-	height: 50px
-	cursor: pointer
 	z-index: 1001
-	background: rgba($pure-white, 0.95)
-	border-radius: 50%
-	box-shadow: 0 4px 15px $shadow-color
-	backdrop-filter: blur(10px)
-	display: flex
-	align-items: center
-	justify-content: center
-	transition: all 0.3s ease
-	&:hover
-		transform: scale(1.1)
-		box-shadow: 0 6px 20px rgba($primary-navy, 0.2)
-
-.hamburger_btn .line
-	position: absolute
-	width: 24px
-	height: 2px
-	background: $primary-navy
-	border-radius: 1px
-	transition: all 0.3s ease
-
-.hamburger_btn .line_01
-	top: 18px
-	transition: 0.3s ease
-
-.hamburger_btn .line_02
-	top: 24px
-	transition: 0.3s ease
-
-.hamburger_btn .line_03
-	top: 30px
-	transition: 0.3s ease
+	h2
+		display: inline-flex
+		margin: 10px
+		width: 250px
+		height: 75px
+		font-size: 18pt
+		justify-content: center
+		text-align: right
+		align-items: center
+		box-sizing: border-box
+		.hamburger_icon
+			margin-left: 15px
+			width: 50px
+			height: 50px
+			cursor: pointer
+			background: rgba($pure-white, 0.95)
+			border-radius: 50%
+			box-shadow: 0 4px 15px $shadow-color
+			backdrop-filter: blur(10px)
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			transition: all 0.3s ease
+			&:hover
+				transform: scale(1.1)
+				box-shadow: 0 6px 20px rgba($primary-navy, 0.2)
+			.line
+				position: absolute
+				width: 24px
+				height: 2px
+				background: $primary-navy
+				border-radius: 1px
+				transition: all 0.3s ease
+			.line_01
+				top: 18px
+				transition: 0.3s ease
+			.line_02
+				top: 24px
+				transition: 0.3s ease
+			.line_03
+				top: 30px
+				transition: 0.3s ease
 
 .btn_line01
 	transform: translateY(6px) rotate(-45deg)
@@ -734,7 +742,7 @@ footer
 			font-size: 0.9rem
 			padding: 1rem 1.2rem
 	ul
-		margin: 0
+		margin: 40px 0 0 0
 		padding: 0
 
 // お問い合わせフォームのスタイル
