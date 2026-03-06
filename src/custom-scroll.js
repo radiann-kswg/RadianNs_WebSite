@@ -1,32 +1,56 @@
-// https://www.tribeck.jp/column/opinion/production/20210726/
-window.onload = function () {
-	Vue.createApp({
-		el: "#custom-scroll",
-		data() {
-			return {
-				scrollNow: false, // スクロール実行中フラグ
-				timer: false,
-			};
-		},
-		mounted() {
-			document
-				.querySelector(".block")
-				.addEventListener("scroll", this.handleScroll);
-		},
-		methods: {
-			/**
-			 * スクロールイベント
-			 */
-			handleScroll: function () {
-				this.scrollNow = true; // スクロールバーを表示
-				_this = this;
+// https://www.tribeck.jp/column/opinion/production/20210726/ (改変済)
+const customScrollComponent = {
+	template: `
+		<div class="block-scroll" v-bind:class="{'is-scrolling': scrollNow}">
+			<div ref="scrollContent" class="scroll-content">
+				<slot></slot>
+			</div>
+		</div>
+	`,
+	data() {
+		return {
+			scrollNow: false,
+			timer: null,
+		};
+	},
+	mounted() {
+		if (this.$refs.scrollContent) {
+			this.$refs.scrollContent.addEventListener("scroll", this.handleScroll, {
+				passive: true,
+			});
+		}
+	},
+	beforeUnmount() {
+		if (this.$refs.scrollContent) {
+			this.$refs.scrollContent.removeEventListener("scroll", this.handleScroll);
+		}
 
-				// 2秒後にスクロールバーを非表示
-				if (this.timer != false) clearTimeout(this.timer);
-				this.timer = setTimeout(function () {
-					_this.scrollNow = false;
-				}, 2000);
-			},
+		if (this.timer) {
+			clearTimeout(this.timer);
+		}
+	},
+	methods: {
+		handleScroll() {
+			this.scrollNow = true;
+
+			if (this.timer) {
+				clearTimeout(this.timer);
+			}
+
+			this.timer = window.setTimeout(() => {
+				this.scrollNow = false;
+				this.timer = null;
+			}, 2000);
 		},
-	});
+	},
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+	document.querySelectorAll("[data-custom-scroll-root]").forEach((element) => {
+		Vue.createApp({
+			components: {
+				"custom-scroll": customScrollComponent,
+			},
+		}).mount(element);
+	});
+});
