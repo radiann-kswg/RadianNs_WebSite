@@ -577,15 +577,26 @@ footer
 		height: 4px
 		background: linear-gradient(90deg, $accent-blue, $light-blue)
 		border-radius: 2px
-	@include small-font
-	a
-		color: $light-blue
-		&.a-p
-			@include smallest-font
-		&.a-link
-			@include modern-button($accent-blue, $light-blue)
-			@include medium-font
-			margin: 5px
+	.license
+		margin-bottom: 10px
+		@include smallest-font
+		a
+			color: $light-blue
+		img
+			display: inline-block
+			width: auto
+			margin: 0 0 0 3px
+			box-shadow: none
+	.credits
+		@include small-font
+		a
+			color: $light-blue
+			&.a-p
+				@include smallest-font
+			&.a-link
+				@include modern-button($accent-blue, $light-blue)
+				@include medium-font
+				margin: 5px
 	@media screen and (max-width:$responsive-smallsize)
 		margin-top: 40px
 		padding: 30px 15px 15px
