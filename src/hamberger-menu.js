@@ -23,7 +23,6 @@ Vue.createApp({})
 					<li><a href="https://www.pixiv.net/users/44375569/">pixiv</a></li>
 					<li><a href="https://radiann-kswg.fanbox.cc/">pixivFANBOX</a></li>
 					<li><a href="https://radiann-kswg.booth.pm/">BOOTH</a></li>
-					<li><a href="https://misskey.io/@RadianN_kswg@radiann6631.net/">Misskey(個人/Personal)</a></li>
 				</ul>
 			</div>
 		</transition>`,
