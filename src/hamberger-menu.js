@@ -1,4 +1,4 @@
-// https://qiita.com/helloworld193/items/9aed3870be1e739c3ad2
+// https://qiita.com/helloworld193/items/9aed3870be1e739c3ad2 (改変済)
 
 Vue.createApp({})
 	.component("hamberger-menu", {
