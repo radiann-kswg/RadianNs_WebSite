@@ -23,6 +23,7 @@ Vue.createApp({})
 					<li><a href="https://www.pixiv.net/users/44375569/">pixiv</a></li>
 					<li><a href="https://radiann-kswg.fanbox.cc/">pixivFANBOX</a></li>
 					<li><a href="https://radiann-kswg.booth.pm/">BOOTH</a></li>
+					<li><a href="https://www.skport.com/profile?id=8931867451568">SKPORT</a></li>
 				</ul>
 			</div>
 		</transition>`,
