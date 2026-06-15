@@ -53,6 +53,7 @@ const contactFormComponent = {
           <option value="work-inquiry">ご依頼・コミッションについて</option>
           <option value="collaboration">コラボ企画について</option>
           <option value="question">「百花繚乱研究所」および創作作品について</option>
+          <option value="tarot-recruitment">「運命線探偵78」公式タロットカードの募集について</option>
           <option value="fan-message">ファンレターを送りたい</option>
           <option value="other">その他のお問い合わせ</option>
         </select>

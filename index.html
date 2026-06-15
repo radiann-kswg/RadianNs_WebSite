@@ -1,175 +1,415 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- セキュリティヘッダー（GitHub Pages対応版） -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; object-src 'none'; base-uri 'self';"
+    />
+    <meta
+      http-equiv="Referrer-Policy"
+      content="strict-origin-when-cross-origin"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="camera=(), microphone=(), geolocation=()"
+    />
 
-	<!-- セキュリティヘッダー（GitHub Pages対応版） -->
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; object-src 'none'; base-uri 'self';">
-	<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-	<meta http-equiv="X-Content-Type-Options" content="nosniff">
-	<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+    <!-- スタイルシート -->
+    <link rel="stylesheet" href="/stylesheet.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/ress/dist/ress.min.css"
+      crossorigin="anonymous"
+    />
 
-	<!-- スタイルシート -->
-	<link rel="stylesheet" href="/stylesheet.css">
-	<link rel='stylesheet' href='https://unpkg.com/ress/dist/ress.min.css' crossorigin="anonymous">
+    <!-- JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/vue@3.5.13"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Vue.jsのフォールバック読み込み（document.writeを避ける）
+      if (!window.Vue) {
+        const script = document.createElement("script");
+        script.src = "https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js";
+        script.crossOrigin = "anonymous";
+        document.head.appendChild(script);
+      }
+    </script>
+    <title>ラジアン(柏木主税)/百花繚乱研究所 - TOP</title>
+    <meta
+      name="description"
+      content="こちらは、一次創作クリエイター「ラジアン(柏木主税)」および一次創作サークル「百花繚乱研究所」の公式ページです"
+    />
+    <meta name="”keywords”" content="”百花繚乱研究所,ラジアン(柏木主税)”" />
+  </head>
 
-	<!-- JavaScript -->
-	<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13" crossorigin="anonymous"></script>
-	<script>
-		// Vue.jsのフォールバック読み込み（document.writeを避ける）
-		if (!window.Vue) {
-			const script = document.createElement('script');
-			script.src = 'https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js';
-			script.crossOrigin = 'anonymous';
-			document.head.appendChild(script);
-		}
-	</script>
-	<title>ラジアン(柏木主税)/百花繚乱研究所 - TOP</title>
-	<meta name="description" content="こちらは、一次創作クリエイター「ラジアン(柏木主税)」および一次創作サークル「百花繚乱研究所」の公式ページです">
-	<meta name=”keywords” content=”百花繚乱研究所,ラジアン(柏木主税)”>
-</head>
+  <body>
+    <header>
+      <div id="app-menu">
+        <hamberger-menu></hamberger-menu>
+      </div>
+      <script src="/src/hamberger-menu.js"></script>
+    </header>
+    <main id="app-list-comp">
+      <h1>ラジアン(柏木主税)<br />「百花繚乱研究所」</h1>
+      <div>
+        <a
+          href="http://database.numbertales-radiann.net/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <h2 class="h2-a-link secure-connection">
+            創作ガイドライン＆創作データベースはこちら
+          </h2>
+        </a>
+        <a
+          href="http://www.numbertales-radiann.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <h2 class="h2-a-link secure-connection">
+            「ナンバーテールズ」公式ページはこちら
+          </h2>
+        </a>
+        <a
+          href="http://www.fateline-investigator78.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <h2 class="h2-a-link secure-connection">
+            「運命線探偵78」公式ページはこちら
+          </h2>
+        </a>
+      </div>
+      <h1 class="h1-noimg">活動履歴</h1>
+      <div data-custom-scroll-root>
+        <custom-scroll>
+          <h2>進行中</h2>
+          <div class="list0">
+            <list-comp wide-style="true">
+              <template #title>「shapesky(しぇいぷすきー)」開設！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/released-service/shapesky-released.png"
+              /></template>
+              <a
+                class="a-link"
+                href="https://shapesky.xsns.jp/notes/amjmrltqe16b00k8"
+                >「shapesky(しぇいぷすきー)」について</a
+              >
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title>【BOOTH】公式グッズ販売中！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/goods/booth-pr.png"
+              /></template>
+              <a-links-official-shop></a-links-official-shop>
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title
+                >「運命線探偵78」公式タロット<br />制作メンバー募集中！</template
+              ><template #images
+                ><a
+                  href="http://fateline-investigator78.com/news/official-tarot_recruitment.html"
+                >
+                  <img
+                    alt="画像が見つかりませんでした"
+                    src="/img/news_contents/fl-investigator78/pr_officialCard_202510.png" /></a
+              ></template>
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title>公式LINEスタンプ販売中！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/news_contents/numbertales/linesticker_available.png"
+              /></template>
+              <a
+                class="a-link"
+                href="https://store.line.me/stickershop/product/26787953/ja"
+                >まんまるスタンプVol.0</a
+              >
+              <a
+                class="a-link"
+                href="https://line.me/S/sticker/26787953/?lang=ja&utm_source=gnsh_stickerDetail"
+                >まんまるスタンプVol.0(LINEアプリ)</a
+              >
+              <a
+                class="a-link"
+                href="https://store.line.me/stickershop/product/30377990/ja"
+                >まんまるスタンプVol.1</a
+              >
+              <a
+                class="a-link"
+                href="https://line.me/S/sticker/30377990/?lang=ja&utm_source=gnsh_stickerDetail"
+                >まんまるスタンプVol.1(LINEアプリ)</a
+              >
+              <a
+                class="a-link"
+                href="https://store.line.me/stickershop/product/34345021/ja"
+                >まんまるスタンプVol.0.2</a
+              >
+              <a
+                class="a-link"
+                href="https://line.me/S/sticker/34345021/?lang=ja&utm_source=gnsh_stickerDetail"
+                >まんまるスタンプVol.0.2(LINEアプリ)</a
+              >
+            </list-comp>
+          </div>
+          <h2>2026年</h2>
+          <div class="list0">
+            <list-comp wide-style="true">
+              <template #title>公式LINEスタンプ新発売！</template
+              ><template #images
+                ><img
+                  src="/img/news_contents/numbertales/linesticker_available-02.png"
+                  alt="画像が見つかりませんでした"
+              /></template>
+              <a
+                class="a-link"
+                href="https://store.line.me/stickershop/product/34345021/ja"
+                >まんまるスタンプVol.0.2</a
+              >
+              <a
+                class="a-link"
+                href="https://line.me/S/sticker/34345021/?lang=ja&utm_source=gnsh_stickerDetail"
+                >まんまるスタンプVol.0.2(LINEアプリ)</a
+              >
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title
+                >アズールレーン<br />二次創作はじめました</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/news_contents/fanmades/fm_commandingInAzurLane_202605.png" /></template
+              ><a class="a-link" href="https://www.pixiv.net/artworks/145107462"
+                >pixiv</a
+              >
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title
+                >「SKPORT」はじめました<br />（アークナイツ二次創作）</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/news_contents/fanmades/fm_workingInRhodes_202604.png" /></template
+              ><a
+                class="a-link"
+                href="https://www.skport.com/profile?id=8931867451568"
+                >SKPORT</a
+              >
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title
+                >アークナイツ(無印/エンドフィールド)<br />二次創作はじめました</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/news_contents/fanmades/fm_workingInEndfield_202604.png" /></template
+              ><a class="a-link" href="https://www.pixiv.net/artworks/143407141"
+                >pixiv(アークナイツ)</a
+              ><a class="a-link" href="https://www.pixiv.net/artworks/143544558"
+                >pixiv(エンドフィールド)</a
+              >
+            </list-comp>
+          </div>
+          <h2>2025年</h2>
+          <div class="list0">
+            <list-comp wide-style="true">
+              <template #title>「みすけっと2025」サークル参加！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/creators-ivent/missket2025.png"
+              /></template>
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title>「運命線探偵78」企画始動！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/news_contents/fl-investigator78/pr_officialCard_202510.png"
+              /></template>
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title>「ナンバーテールズ」制作４周年！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/news_special/numbertales/aniv_4th.png"
+              /></template>
+            </list-comp>
+          </div>
+          <h2>2024年</h2>
+          <div class="list0">
+            <list-comp wide-style="true">
+              <template #title
+                >「ナンバーテールズ」公式キャラスト「93(クミ)編」始動！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/news_contents/numbertales/novel_chrst-nts93.png"
+              /></template>
+              <a class="a-link" href="/character-stories/character93-story.html"
+                >詳細はこちら</a
+              >
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title>公式LINEスタンプ発売！</template>
+              <template #images
+                ><img
+                  src="/img/news_contents/numbertales/linesticker_available.png"
+                  alt="画像が見つかりませんでした"
+              /></template>
+              <a
+                class="a-link"
+                href="https://store.line.me/stickershop/product/26787953/ja"
+                >まんまるスタンプVol.0</a
+              >
+              <a
+                class="a-link"
+                href="https://line.me/S/sticker/26787953/?lang=ja&utm_source=gnsh_stickerDetail"
+                >まんまるスタンプVol.0(LINEアプリ)</a
+              >
+              <a
+                class="a-link"
+                href="https://store.line.me/stickershop/product/30377990/ja"
+                >まんまるスタンプVol.1</a
+              >
+              <a
+                class="a-link"
+                href="https://line.me/S/sticker/30377990/?lang=ja&utm_source=gnsh_stickerDetail"
+                >まんまるスタンプVol.1(LINEアプリ)</a
+              >
+            </list-comp>
+          </div>
+          <h2>2023年</h2>
+          <div class="list0">
+            <list-comp wide-style="true">
+              <template #title>「コミケマーケット103」参戦！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/creators-ivent/c103.JPG"
+              /></template>
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title
+                >「SanukiXGame2023」にて公式ミニゲーム出展！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/creators-ivent/sxg2023.jpg"
+              /></template>
+              <a
+                class="a-link"
+                href="http://www.numbertales-radiann.com/news/news202311_sxg2023.html"
+                >詳細はこちら</a
+              >
+              <a class="a-link" href="https://showxguys.org/">SXG公式ページ</a>
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title
+                >「1(ハジメ)」コアフォルダ等身大ぬいぐるみを購入！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/goods/numbertales/IMG_1713.JPG"
+              /></template>
+              <a
+                class="a-link"
+                href="https://x.com/zeroone001/status/1707578851335999997"
+                >製作会社様 御宣伝(Twitter/X)</a
+              >
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title>「ナンバーテールズ」制作２周年！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/news_special/numbertales/aniv_2nd.png"
+              /></template>
+              <a class="a-link" href="https://www.pixiv.net/artworks/106943484"
+                >pixiv</a
+              >
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title>スクエア缶バッヂ(全4種)限定販売中！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/goods/numbertales/fanbox-only/canvas_11db327cb7.png"
+              /></template>
+              <a
+                class="a-link"
+                href="https://radiann-kswg.fanbox.cc/posts/5164175"
+                >詳細はこちら(FANBOX有償記事)</a
+              >
+            </list-comp>
+            <list-comp wide-style="true">
+              <template #title>pixivFANBOX開設！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/news_special/pixivFANBOX-000.png"
+              /></template>
+              <a class="a-link" href="https://radiann-kswg.fanbox.cc/"
+                >pixivFANBOXトップ</a
+              >
+            </list-comp>
+          </div>
+          <h2>2022年</h2>
+          <div class="list0">
+            <list-comp wide-style="true">
+              <template #title
+                >「SanukiXGame2022」にて公式ミニゲーム出展！</template
+              ><template #images
+                ><img
+                  alt="画像が見つかりませんでした"
+                  src="/img/creators-ivent/sxg2022.jpg"
+              /></template>
+              <a
+                class="a-link"
+                href="http://www.numbertales-radiann.com/news/news202206_sxg2022.html"
+                >詳細はこちら</a
+              >
+              <a class="a-link" href="https://showxguys.org/">SXG公式ページ</a>
+              <a-links-sxg2022></a-links-sxg2022>
+            </list-comp>
+          </div>
+        </custom-scroll>
+      </div>
+    </main>
+    <script src="/src/list-components.js"></script>
+    <script src="/src/custom-scroll.js"></script>
 
-<body>
-	<header>
-		<div id="app-menu">
-			<hamberger-menu></hamberger-menu>
-		</div>
-		<script src="/src/hamberger-menu.js"></script>
-	</header>
-	<main id="app-list-comp">
-		<h1>ラジアン(柏木主税)<br />「百花繚乱研究所」</h1>
-		<div>
-		<a href="http://database.numbertales-radiann.net/" rel="noopener noreferrer" target="_blank">
-			<h2 class="h2-a-link secure-connection">創作ガイドライン＆創作データベースはこちら</h2>
-		</a>
-		<a href="http://www.numbertales-radiann.com/" rel="noopener noreferrer" target="_blank">
-			<h2 class="h2-a-link secure-connection">ナンバーテールズ公式ページはこちら</h2>
-		</a></div>
-		<h1 class="h1-noimg">活動履歴</h1>
-		<div data-custom-scroll-root>
-			<custom-scroll>
-				<h2>進行中</h2>
-				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「shapesky(しぇいぷすきー)」開設！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/released-service/shapesky-released.png"></template>
-						<a class="a-link"
-							href="https://shapesky.xsns.jp/notes/amjmrltqe16b00k8">「shapesky(しぇいぷすきー)」について</a>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>【BOOTH】公式グッズ販売中！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/goods/booth-pr.png"></template>
-						<a-links-official-shop></a-links-official-shop>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>公式LINEスタンプ販売中！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/news_contents/numbertales/linesticker_available.png"></template>
-						<a class="a-link"
-							href="https://store.line.me/stickershop/product/26787953/ja">まんまるスタンプVol.0</a>
-						<a class="a-link"
-							href="https://line.me/S/sticker/26787953/?lang=ja&utm_source=gnsh_stickerDetail">まんまるスタンプVol.0(LINEアプリ)</a>
-						<a class="a-link"
-							href="https://store.line.me/stickershop/product/30377990/ja">まんまるスタンプVol.1</a>
-						<a class="a-link"
-							href="https://line.me/S/sticker/30377990/?lang=ja&utm_source=gnsh_stickerDetail">まんまるスタンプVol.1(LINEアプリ)</a>
-					</list-comp>
-				</div>
-				<h2>2026年</h2>
-				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>アズールレーン<br />二次創作はじめました</template><template #images><img alt="画像が見つかりませんでした"
-								src="/img/news_contents/fanmades/fm_commandingInAzurLane_202605.png"></template><a class="a-link"
-							href="https://www.pixiv.net/artworks/145107462">pixiv</a>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「SKPORT」はじめました<br />（アークナイツ二次創作）</template><template #images><img alt="画像が見つかりませんでした"
-								src="/img/news_contents/fanmades/fm_workingInRhodes_202604.png"></template><a class="a-link" href="https://www.skport.com/profile?id=8931867451568">SKPORT</a>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>アークナイツ(無印/エンドフィールド)<br />二次創作はじめました</template><template #images><img alt="画像が見つかりませんでした"
-								src="/img/news_contents/fanmades/fm_workingInEndfield_202604.png"></template><a class="a-link"
-							href="https://www.pixiv.net/artworks/143407141">pixiv(アークナイツ)</a><a class="a-link" href="https://www.pixiv.net/artworks/143544558">pixiv(エンドフィールド)</a>
-					</list-comp>
-				</div>
-				<h2>2025年</h2>
-				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「みすけっと2025」サークル参加！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/creators-ivent/missket2025.png"></template>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「運命線探偵78」企画始動！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/news_contents/fl-investigator78/pr_officialCard_202510.png"></template>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「ナンバーテールズ」制作４周年！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/news_special/numbertales/aniv_4th.png"></template>
-					</list-comp>
-				</div>
-				<h2>2024年</h2>
-				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「ナンバーテールズ」公式キャラスト「93(クミ)編」始動！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/news_contents/numbertales/novel_chrst-nts93.png"></template>
-						<a class="a-link" href="/character-stories/character93-story.html">詳細はこちら</a>
-					</list-comp>
-				</div>
-				<h2>2023年</h2>
-				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「コミケマーケット103」参戦！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/creators-ivent/c103.JPG"></template>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「SanukiXGame2023」にて公式ミニゲーム出展！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/creators-ivent/sxg2023.jpg"></template>
-						<a class="a-link" href="http://www.numbertales-radiann.com/news/news202311_sxg2023.html">詳細はこちら</a>
-						<a class="a-link" href="https://showxguys.org/">SXG公式ページ</a>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「1(ハジメ)」コアフォルダ等身大ぬいぐるみを購入！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/goods/numbertales/IMG_1713.JPG"></template>
-						<a class="a-link" href="https://x.com/zeroone001/status/1707578851335999997">製作会社様
-							御宣伝(Twitter/X)</a>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「ナンバーテールズ」制作２周年！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/news_special/numbertales/aniv_2nd.png"></template>
-						<a class="a-link" href="https://www.pixiv.net/artworks/106943484">pixiv</a>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>スクエア缶バッヂ(全4種)限定販売中！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/goods/numbertales/fanbox-only/canvas_11db327cb7.png"></template>
-						<a class="a-link" href="https://radiann-kswg.fanbox.cc/posts/5164175">詳細はこちら(FANBOX有償記事)</a>
-					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>pixivFANBOX開設！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/news_special/pixivFANBOX-000.png"></template>
-						<a class="a-link" href="https://radiann-kswg.fanbox.cc/">pixivFANBOXトップ</a>
-					</list-comp>
-				</div>
-				<h2>2022年</h2>
-				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「SanukiXGame2022」にて公式ミニゲーム出展！</template><template #images><img alt="画像が見つかりませんでした"  src="/img/creators-ivent/sxg2022.jpg"></template>
-						<a class="a-link" href="http://www.numbertales-radiann.com/news/news202206_sxg2022.html">詳細はこちら</a>
-						<a class="a-link" href="https://showxguys.org/">SXG公式ページ</a>
-						<a-links-sxg2022></a-links-sxg2022>
-					</list-comp>
-				</div>
-			</custom-scroll>
-		</div>
-	</main>
-	<script src="/src/list-components.js"></script>
-	<script src="/src/custom-scroll.js"></script>
+    <!-- お問い合わせフォーム -->
+    <section id="app-contact" class="contact-section">
+      <div class="contact-container">
+        <h2 class="contact-title">お問い合わせ</h2>
+        <p class="contact-description">
+          創作活動やお仕事のご依頼、その他ご質問がございましたらお気軽にお問い合わせください。
+        </p>
+        <contact-form></contact-form>
+      </div>
+    </section>
+    <script src="/src/contact-form.js"></script>
 
-	<!-- お問い合わせフォーム -->
-	<section id="app-contact" class="contact-section">
-		<div class="contact-container">
-			<h2 class="contact-title">お問い合わせ</h2>
-			<p class="contact-description">
-				創作活動やお仕事のご依頼、その他ご質問がございましたらお気軽にお問い合わせください。
-			</p>
-			<contact-form></contact-form>
-		</div>
-	</section>
-	<script src="/src/contact-form.js"></script>
-
-	<footer>
-		<div id="app-credit">
-			<footer-credit></footer-credit>
-		</div>
-		<script src="/src/credit-footer.js"></script>
-	</footer>
-</body>
-
+    <footer>
+      <div id="app-credit">
+        <footer-credit></footer-credit>
+      </div>
+      <script src="/src/credit-footer.js"></script>
+    </footer>
+  </body>
 </html>
