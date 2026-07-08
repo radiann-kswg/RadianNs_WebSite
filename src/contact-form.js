@@ -1,3 +1,7 @@
+// Cloudflare Turnstile 設定
+const TURNSTILE_SITEKEY = '0x4AAAAAADxuV3bJjkSQTDS-';
+const TURNSTILE_SITEVERIFY_URL = 'https://turnstile-siteverify-radiann-website.radiannkswg-mcp.workers.dev';
+
 // お問い合わせフォームコンポーネント
 const contactFormComponent = {
   template: `
@@ -91,6 +95,11 @@ const contactFormComponent = {
           </a>に同意する <span class="required">*</span>
         </label>
         <span v-if="errors.privacyAccepted" class="error-message">{{ errors.privacyAccepted }}</span>
+      </div>
+
+      <div class="form-group turnstile-widget">
+        <div class="cf-turnstile" data-sitekey="${TURNSTILE_SITEKEY}" data-action="turnstile-spin-v1"></div>
+        <span v-if="errors.turnstile" class="error-message">{{ errors.turnstile }}</span>
       </div>
 
       <div class="form-actions">
@@ -199,6 +208,12 @@ const contactFormComponent = {
       this.showError = false;
 
       try {
+        const verified = await this.verifyTurnstile();
+        if (!verified) {
+          this.errors.turnstile = 'ボット確認にチェックを入れてください';
+          return;
+        }
+
         // フォーム送信の処理（設定ファイルで指定されたエンドポイントを使用）
         const response = await this.submitForm();
 
@@ -214,6 +229,25 @@ const contactFormComponent = {
         this.errorMessage = error.message || 'ネットワークエラーが発生しました。しばらく後で再度お試しください。';
       } finally {
         this.isLoading = false;
+      }
+    },
+
+    async verifyTurnstile() {
+      const token = window.turnstile ? window.turnstile.getResponse() : '';
+      if (!token) {
+        return false;
+      }
+
+      try {
+        const response = await fetch(TURNSTILE_SITEVERIFY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token })
+        });
+        const data = await response.json();
+        return data.success === true;
+      } finally {
+        if (window.turnstile) window.turnstile.reset();
       }
     },
 
