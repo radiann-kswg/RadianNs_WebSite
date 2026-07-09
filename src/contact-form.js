@@ -4,7 +4,7 @@ const TURNSTILE_SITEVERIFY_URL = 'https://turnstile-siteverify-radiann-website.r
 
 // お問い合わせフォームコンポーネント
 const contactFormComponent = {
-  template: `
+	template: `
     <div class="contact-form-container">
       <div class="form-security-notice">
         <p>このフォームはセキュリティ強化されており、SSL暗号化通信で安全に送信されます。</p>
@@ -57,6 +57,7 @@ const contactFormComponent = {
           <option value="work-inquiry">ご依頼・コミッションについて</option>
           <option value="collaboration">コラボ企画について</option>
           <option value="question">「百花繚乱研究所」および創作作品について</option>
+          <option value="number-tales-request">「ナンバーテールズ」のリクエストナンバー募集について</option>
           <option value="tarot-recruitment">「運命線探偵78」公式タロットカードの募集について</option>
           <option value="fan-message">ファンレターを送りたい</option>
           <option value="other">その他のお問い合わせ</option>
@@ -149,173 +150,173 @@ const contactFormComponent = {
         </div>
       </div>
     </div>`,
-  data() {
-    return {
-      form: {
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        privacyAccepted: false
-      },
-      errors: {},
-      isLoading: false,
-      showSuccess: false,
-      showError: false,
-      showPrivacyPolicy: false,
-      errorMessage: ''
-    };
-  },
-  methods: {
-    validateForm() {
-      this.errors = {};
+	data() {
+		return {
+			form: {
+				name: '',
+				email: '',
+				subject: '',
+				message: '',
+				privacyAccepted: false
+			},
+			errors: {},
+			isLoading: false,
+			showSuccess: false,
+			showError: false,
+			showPrivacyPolicy: false,
+			errorMessage: ''
+		};
+	},
+	methods: {
+		validateForm() {
+			this.errors = {};
 
-      if (!this.form.name.trim()) {
-        this.errors.name = 'お名前は必須です';
-      } else if (this.form.name.length > 50) {
-        this.errors.name = 'お名前は50文字以内で入力してください';
-      }
+			if (!this.form.name.trim()) {
+				this.errors.name = 'お名前は必須です';
+			} else if (this.form.name.length > 50) {
+				this.errors.name = 'お名前は50文字以内で入力してください';
+			}
 
-      if (!this.form.email.trim()) {
-        this.errors.email = 'メールアドレスは必須です';
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email)) {
-        this.errors.email = '有効なメールアドレスを入力してください';
-      }
+			if (!this.form.email.trim()) {
+				this.errors.email = 'メールアドレスは必須です';
+			} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email)) {
+				this.errors.email = '有効なメールアドレスを入力してください';
+			}
 
-      if (!this.form.subject) {
-        this.errors.subject = '件名を選択してください';
-      }
+			if (!this.form.subject) {
+				this.errors.subject = '件名を選択してください';
+			}
 
-      if (!this.form.message.trim()) {
-        this.errors.message = 'メッセージは必須です';
-      } else if (this.form.message.length > 1000) {
-        this.errors.message = 'メッセージは1000文字以内で入力してください';
-      }
+			if (!this.form.message.trim()) {
+				this.errors.message = 'メッセージは必須です';
+			} else if (this.form.message.length > 1000) {
+				this.errors.message = 'メッセージは1000文字以内で入力してください';
+			}
 
-      if (!this.form.privacyAccepted) {
-        this.errors.privacyAccepted = 'プライバシーポリシーに同意してください';
-      }
+			if (!this.form.privacyAccepted) {
+				this.errors.privacyAccepted = 'プライバシーポリシーに同意してください';
+			}
 
-      return Object.keys(this.errors).length === 0;
-    },
+			return Object.keys(this.errors).length === 0;
+		},
 
-    async handleSubmit() {
-      if (!this.validateForm()) {
-        return;
-      }
+		async handleSubmit() {
+			if (!this.validateForm()) {
+				return;
+			}
 
-      this.isLoading = true;
-      this.showError = false;
+			this.isLoading = true;
+			this.showError = false;
 
-      try {
-        const verified = await this.verifyTurnstile();
-        if (!verified) {
-          this.errors.turnstile = 'ボット確認にチェックを入れてください';
-          return;
-        }
+			try {
+				const verified = await this.verifyTurnstile();
+				if (!verified) {
+					this.errors.turnstile = 'ボット確認にチェックを入れてください';
+					return;
+				}
 
-        // フォーム送信の処理（設定ファイルで指定されたエンドポイントを使用）
-        const response = await this.submitForm();
+				// フォーム送信の処理（設定ファイルで指定されたエンドポイントを使用）
+				const response = await this.submitForm();
 
-        if (response.success) {
-          this.showSuccess = true;
-          this.resetForm();
-        } else {
-          throw new Error(response.error || '送信に失敗しました');
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        this.showError = true;
-        this.errorMessage = error.message || 'ネットワークエラーが発生しました。しばらく後で再度お試しください。';
-      } finally {
-        this.isLoading = false;
-      }
-    },
+				if (response.success) {
+					this.showSuccess = true;
+					this.resetForm();
+				} else {
+					throw new Error(response.error || '送信に失敗しました');
+				}
+			} catch (error) {
+				console.error('Form submission error:', error);
+				this.showError = true;
+				this.errorMessage = error.message || 'ネットワークエラーが発生しました。しばらく後で再度お試しください。';
+			} finally {
+				this.isLoading = false;
+			}
+		},
 
-    async verifyTurnstile() {
-      const token = window.turnstile ? window.turnstile.getResponse() : '';
-      if (!token) {
-        return false;
-      }
+		async verifyTurnstile() {
+			const token = window.turnstile ? window.turnstile.getResponse() : '';
+			if (!token) {
+				return false;
+			}
 
-      try {
-        const response = await fetch(TURNSTILE_SITEVERIFY_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ token })
-        });
-        const data = await response.json();
-        return data.success === true;
-      } finally {
-        if (window.turnstile) window.turnstile.reset();
-      }
-    },
+			try {
+				const response = await fetch(TURNSTILE_SITEVERIFY_URL, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ token })
+				});
+				const data = await response.json();
+				return data.success === true;
+			} finally {
+				if (window.turnstile) window.turnstile.reset();
+			}
+		},
 
-    async submitForm() {
-      // セキュリティ強化されたフォーム送信処理
-      const sanitizedForm = {
-        name: this.sanitizeInput(this.form.name),
-        email: this.sanitizeInput(this.form.email),
-        subject: this.sanitizeInput(this.form.subject),
-        message: this.sanitizeInput(this.form.message),
-        timestamp: new Date().toISOString(),
-        origin: window.location.origin
-      };
+		async submitForm() {
+			// セキュリティ強化されたフォーム送信処理
+			const sanitizedForm = {
+				name: this.sanitizeInput(this.form.name),
+				email: this.sanitizeInput(this.form.email),
+				subject: this.sanitizeInput(this.form.subject),
+				message: this.sanitizeInput(this.form.message),
+				timestamp: new Date().toISOString(),
+				origin: window.location.origin
+			};
 
-      const response = await fetch('https://formspree.io/f/mzznvbdl', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-        mode: 'cors',
-        credentials: 'omit',
-        referrerPolicy: 'strict-origin-when-cross-origin',
-        body: JSON.stringify(sanitizedForm)
-      });
+			const response = await fetch('https://formspree.io/f/mzznvbdl', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json',
+					'X-Requested-With': 'XMLHttpRequest'
+				},
+				mode: 'cors',
+				credentials: 'omit',
+				referrerPolicy: 'strict-origin-when-cross-origin',
+				body: JSON.stringify(sanitizedForm)
+			});
 
-		if (response.ok) {
-			return { success: true };
-		} else {
-			throw new Error('送信に失敗しました');
+			if (response.ok) {
+				return { success: true };
+			} else {
+				throw new Error('送信に失敗しました');
+			}
+		},
+
+		resetForm() {
+			this.form = {
+				name: '',
+				email: '',
+				subject: '',
+				message: '',
+				privacyAccepted: false
+			};
+			this.errors = {};
+		},
+
+		sanitizeInput(input) {
+			if (typeof input !== 'string') return input;
+			// XSS対策のための基本的なサニタイゼーション
+			return input
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#x27;')
+				.replace(/\//g, '&#x2F;');
 		}
-    },
+	},
 
-    resetForm() {
-      this.form = {
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        privacyAccepted: false
-      };
-      this.errors = {};
-    },
-
-    sanitizeInput(input) {
-      if (typeof input !== 'string') return input;
-      // XSS対策のための基本的なサニタイゼーション
-      return input
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#x27;')
-        .replace(/\//g, '&#x2F;');
-    }
-  },
-
-  mounted() {
-    // フォーム設定の読み込み（実際の実装では外部ファイルから読み込み）
-    console.log('Contact form initialized');
-  }
+	mounted() {
+		// フォーム設定の読み込み（実際の実装では外部ファイルから読み込み）
+		console.log('Contact form initialized');
+	}
 };
 
 // Vue アプリケーションの初期化
 const { createApp } = Vue;
 
 createApp({
-  components: {
-    'contact-form': contactFormComponent
-  }
+	components: {
+		'contact-form': contactFormComponent
+	}
 }).mount('#app-contact');
