@@ -16,13 +16,16 @@ Vue.createApp({})
 		<transition name="menu">
 			<div class="menu" v-show="ActiveBtn">
 				<ul>
-					<li><a href="/index.html">サイトトップ</a></li>
+					<li><a href="/index.html">サイトトップ / Site Top</a></li>
 					<li><a href="https://database.numbertales-radiann.net/">創作データベース/Creation Databases</a></li>
-					<li><a href="https://www.numbertales-radiann.com/">ナンバーテールズ公式サイト/NumberTales Official</a></li>
+					<li><a href="https://numbertales-radiann.com/">ナンバーテールズ公式サイト/NumberTales Official</a></li>
+					<li><a href="https://fateline-investigator78.com/">運命線探偵78公式サイト/FateLine Investigator 78 Official</a></li>
 					<li><a href="https://github.com/radiann-kswg">GitHub</a></li>
+					<li><a href="https://unityroom.com/users/radiann_kswg">unityroom</a></li>
 					<li><a href="https://www.pixiv.net/users/44375569/">pixiv</a></li>
 					<li><a href="https://radiann-kswg.fanbox.cc/">pixivFANBOX</a></li>
 					<li><a href="https://radiann-kswg.booth.pm/">BOOTH</a></li>
+					<li><a href="https://line.me/S/shop/sticker/author/4775486/ja">LINEスタンプ / LINE Stickers</a></li>
 					<li><a href="https://www.skport.com/profile?id=8931867451568">SKPORT</a></li>
 				</ul>
 			</div>
