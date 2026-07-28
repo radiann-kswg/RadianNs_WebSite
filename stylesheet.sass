@@ -1220,3 +1220,178 @@ a[href^="http"]
 		padding: 2px 4px
 		border-radius: 4px
 		transition: all 0.2s ease
+// ==== 技術ポートフォリオページ（/tech/） ====
+.tech-main
+	@include div-pageblock0
+	max-width: 1000px
+	margin: 0 auto
+	padding: 0 20px 60px
+
+.tech-section
+	margin-bottom: 50px
+
+.tech-lead
+	@include card-style
+	@include medium-font
+	p
+		margin-bottom: 12px
+		&:last-child
+			margin-bottom: 0
+	strong
+		color: $primary-navy
+		font-weight: 700
+
+.tech-lead-sub
+	@include small-font
+	color: $medium-gray
+
+.tech-pillars
+	display: flex
+	flex-direction: column
+	gap: 5px
+
+.tech-pillar
+	@include card-style
+	border-left: 5px solid $accent-blue
+	h3
+		@include font-sansserif
+		color: $primary-navy
+		font-size: clamp(1rem, 2.4vw, 1.25rem)
+		font-weight: 600
+		width: auto
+		display: block
+		text-align: left
+		margin: 0 0 12px 0
+		padding: 0
+		background: none
+		background-color: transparent
+		box-shadow: none
+		border: none
+	p
+		@include small-font
+		margin: 0
+
+.tech-card
+	@include card-style
+	h3
+		@include font-sansserif
+		color: $primary-navy
+		font-size: clamp(1.1rem, 2.6vw, 1.4rem)
+		font-weight: 700
+		width: auto
+		display: block
+		text-align: left
+		margin: 0 0 8px 0
+		padding: 0 0 10px 0
+		background: none
+		background-color: transparent
+		box-shadow: none
+		border: none
+		border-bottom: 2px solid $border-gray
+
+.tech-badge
+	display: inline-block
+	margin-left: 10px
+	padding: 3px 12px
+	font-size: 0.7rem
+	font-weight: 600
+	color: $pure-white
+	background: linear-gradient(135deg, $accent-blue 0%, $light-blue 100%)
+	border-radius: 999px
+	vertical-align: middle
+
+.tech-card-summary
+	@include small-font
+	color: $medium-gray
+	margin: 12px 0 18px
+
+.tech-spec
+	@include small-font
+	margin: 0
+	dt
+		font-weight: 700
+		color: $accent-blue
+		margin-top: 14px
+		&:first-child
+			margin-top: 0
+	dd
+		margin: 4px 0 0 0
+		padding-left: 14px
+		border-left: 2px solid $border-gray
+		strong
+			color: $primary-navy
+
+.tech-links
+	margin-top: 18px
+	display: flex
+	flex-wrap: wrap
+	gap: 10px
+
+.tech-note
+	@include small-font
+	color: $medium-gray
+	margin-bottom: 16px
+
+.tech-table-wrap
+	@include card-style
+	overflow-x: auto
+
+.tech-table
+	@include small-font
+	width: 100%
+	border-collapse: collapse
+	th, td
+		padding: 12px 14px
+		text-align: left
+		vertical-align: top
+		border-bottom: 1px solid $border-gray
+	thead th
+		color: $pure-white
+		background: linear-gradient(135deg, $primary-navy 0%, $secondary-navy 100%)
+		font-weight: 600
+	tbody th
+		width: 30%
+		color: $primary-navy
+		background: $light-gray
+		font-weight: 600
+		white-space: nowrap
+	tbody tr:last-child
+		th, td
+			border-bottom: none
+	tbody tr:hover td
+			background: rgba($accent-blue, 0.06)
+	@media screen and (max-width:$responsive-smallsize)
+		tbody th
+		white-space: normal
+
+.tech-list
+	@include card-style
+	@include small-font
+	list-style: disc
+	padding-left: 45px
+	li
+		list-style-type: disc
+		margin-bottom: 12px
+		&:last-child
+			margin-bottom: 0
+	strong
+		color: $primary-navy
+
+.tech-linklist
+	@include card-style
+	list-style: none
+	padding-left: 25px
+	li
+		list-style-type: none
+		margin-bottom: 4px
+		&:last-child
+			margin-bottom: 0
+
+code
+	font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace
+	font-size: 0.9em
+	padding: 2px 6px
+	background: $light-gray
+	border: 1px solid $border-gray
+	border-radius: 4px
+	color: $secondary-navy

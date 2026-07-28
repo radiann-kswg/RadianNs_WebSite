@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- セキュリティヘッダー（GitHub Pages対応版） -->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data: https://mirrors.creativecommons.org; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self';" />
+	<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+	<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+	<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+
+	<!-- スタイルシート -->
+	<link rel="stylesheet" href="/stylesheet.css" />
+	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" crossorigin="anonymous" />
+
+	<!-- JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.5.13" crossorigin="anonymous"></script>
+	<script>
+		// Vue.jsのフォールバック読み込み（document.writeを避ける）
+		if (!window.Vue) {
+			const script = document.createElement("script");
+			script.src = "https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js";
+			script.crossOrigin = "anonymous";
+			document.head.appendChild(script);
+		}
+	</script>
+	<title>技術ポートフォリオ - ラジアン(柏木主税)/百花繚乱研究所</title>
+	<meta name="description" content="ラジアン(柏木主税)の技術ポートフォリオです。AIエージェントとの協働開発によるMisskey AI Bot・公開データベース・各種ツールの制作実績をまとめています。" />
+	<meta name="keywords" content="ポートフォリオ,個人開発,TypeScript,AI協働開発,Misskey Bot,ラジアン(柏木主税)" />
+</head>
+
+<body>
+	<header>
+		<div id="app-menu">
+			<hamberger-menu></hamberger-menu>
+		</div>
+		<script src="/src/hamberger-menu.js"></script>
+	</header>
+
+	<main class="tech-main">
+		<h1 class="h1-noimg">技術ポートフォリオ</h1>
+
+		<section class="tech-section">
+			<div class="tech-lead">
+				<p>
+					一次創作サークル「百花繚乱研究所」のサークル主 <strong>ラジアン(柏木主税)</strong> です。
+					VS Code ＋ AIエージェント（Claude / GitHub Copilot / Codex）で、
+					<strong>自分の運用課題を解決するツール・Botを、設計から本番運用まで一人で回しています。</strong>
+				</p>
+				<p class="tech-lead-sub">
+					創作活動そのものについては <a class="a-p" href="/index.html">サイトトップ</a> をご覧ください。
+					このページは開発面の実績に絞ってまとめています。
+				</p>
+			</div>
+		</section>
+
+		<section class="tech-section">
+			<h2>開発者としての現在地</h2>
+			<div class="tech-pillars">
+				<div class="tech-pillar">
+					<h3>AIエージェントを「使う」だけでなく「働かせる」構成を設計している</h3>
+					<p>
+						<code>AGENTS.md</code> を Single Source of Truth とし、
+						<code>CLAUDE.md</code> / <code>copilot-instructions.md</code> を薄い入口として派生させる構成を、
+						複数のリポジトリで実運用しています。
+						タロットBot「錦野舞」では、Claude / GitHub Copilot / Codex / Misskey Bot という
+						<strong>4つの入口がすべて同じ正本を実行時に読む</strong>構成まで踏み込みました。設定を複製していないため、
+						正本を書き換えるだけで4つの挙動が同時に変わります。
+						MCP（Model Context Protocol）を使って、AIから外部ツールやローカルファイルを操作する連携も実装済みです。
+					</p>
+				</div>
+				<div class="tech-pillar">
+					<h3>AI生成コードを検証する仕組みを持っている</h3>
+					<p>
+						主力の <code>APHRNTs_100</code> は、実装 約5,200行に対してテストが 約4,200行（vitest 46ファイル）あります。
+						AIに書かせたコードをそのまま通さず、テストで検証してからマージする運用を取っています。
+					</p>
+				</div>
+				<div class="tech-pillar">
+					<h3>要件定義から本番運用・障害対策まで一人で通している</h3>
+					<p>
+						Misskey AI Bot 3本を運用しており、うち2本はGCP上で常時稼働させています。
+						<code>master</code> マージ後の自動デプロイと、3層ウォッチドッグ（プロセス / VM内 / VM外部）による自動復旧まで構築しました。
+						1本目で作った運用基盤は、2本目へそのまま横展開しています。
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="tech-section">
+			<h2>主力プロジェクト</h2>
+
+			<article class="tech-card">
+				<h3>APHRNTs_100 <span class="tech-badge">本番稼働中</span></h3>
+				<p class="tech-card-summary">生活管理・セルフケア支援のMisskey AI Bot（TypeScript / Node.js）</p>
+				<dl class="tech-spec">
+					<dt>課題</dt>
+					<dd>体調や生活の記録を自分で続けたかったが、既存のアプリでは記録の形式を自分で決められなかった。</dd>
+					<dt>技術</dt>
+					<dd>TypeScript / Node.js / SQLite / vitest / GCE（systemd常駐）/ Cloud Run functions / Cloud Scheduler</dd>
+					<dt>規模</dt>
+					<dd>実装 約5,200行（59ファイル）、テスト 約4,200行（46ファイル）、運用スクリプト 約1,100行</dd>
+					<dt>設計判断</dt>
+					<dd>
+						Anthropic / OpenAI / Gemini を共通インタフェースで切り替えるマルチLLM抽象化。
+						Markdownログ ⇄ SQLite の双方向同期を、全文置換ではなく<strong>マーカー区間のみ置換</strong>する方式で実装し、
+						手書きの記録を壊さないことを最優先の制約に置きました。
+						記録の実体はgit管理外とし、<strong>公開しているのは記録の形式と仕組みだけ</strong>です。
+					</dd>
+				</dl>
+				<p class="tech-links">
+					<a class="a-link" href="https://github.com/radiann-kswg/APHRNTs_100" rel="noopener noreferrer" target="_blank">GitHub リポジトリ</a>
+				</p>
+			</article>
+
+			<article class="tech-card">
+				<h3>NumberTales-MisskeyAIBot <span class="tech-badge">本番稼働中</span></h3>
+				<p class="tech-card-summary">創作キャラクターのMisskey AI Bot（TypeScript / Node.js）</p>
+				<dl class="tech-spec">
+					<dt>課題</dt>
+					<dd>創作キャラクターを継続的に発信したかったが、手動での投稿は続かなかった。</dd>
+					<dt>技術</dt>
+					<dd>TypeScript / Node.js / SQLite / GCP VM / PM2 / GitHub Actions</dd>
+					<dt>設計判断</dt>
+					<dd>
+						キャラクター設定の正典は公開データベース側に置き、Botからはサブモジュールとして参照する構成にして、
+						設定の二重管理を避けました。
+						システムプロンプトは「キャラクターの識別・口調」と「Botとしての実行制約」を分けた二層構成で自動生成しています。
+						3層ウォッチドッグ（PM2 / VM内systemd timer / Cloud Scheduler + Cloud Run functions）で、
+						人手を介さず復旧する構成を取りました。
+					</dd>
+				</dl>
+				<p class="tech-links">
+					<a class="a-link" href="https://github.com/radiann-kswg/NumberTales-MisskeyAIBot" rel="noopener noreferrer" target="_blank">GitHub リポジトリ</a>
+				</p>
+			</article>
+
+			<article class="tech-card">
+				<h3>Tarot-byFateLineDealer <span class="tech-badge">運用中</span></h3>
+				<p class="tech-card-summary">タロット占いBot「錦野舞」。1つの正本を4つの実行環境が共有する構成（Python）</p>
+				<dl class="tech-spec">
+					<dt>課題</dt>
+					<dd>
+						同じキャラクター・同じ手順を、チャット（Claude / Copilot / Codex）でもBotでも使いたかった。
+						環境ごとに設定を書き写すと、必ずどこかが古くなる。
+					</dd>
+					<dt>技術</dt>
+					<dd>Python / Claude API / Misskey API / Pillow（画像合成）</dd>
+					<dt>設計判断</dt>
+					<dd>
+						キャラクター設定と運用ルールの正本を2ファイルに限定し、
+						<strong>4つの入口すべてが実行時にその正本を読む</strong>構成にしました。Bot側へ設定をコピーしていないため、
+						正本を書き換えれば4つの挙動が同時に変わります。
+						カードの抽選は乱数スクリプトに分離して公正性を担保し、
+						投稿は既定で dry-run、実投稿には明示的なフラグを要求する設計にしています。
+					</dd>
+				</dl>
+				<p class="tech-links">
+					<a class="a-link" href="https://github.com/radiann-kswg/Tarot-byFateLineDealer" rel="noopener noreferrer" target="_blank">GitHub リポジトリ</a>
+				</p>
+			</article>
+
+			<article class="tech-card">
+				<h3>100BeautiesLab_CreationsDB</h3>
+				<p class="tech-card-summary">静的ホスティング上に擬似REST APIを実装した、創作キャラクターの公開データベース</p>
+				<dl class="tech-spec">
+					<dt>課題</dt>
+					<dd>創作設定が膨大になり、手元のファイルでは管理できなくなった。機械可読な形で公開したかった。</dd>
+					<dt>技術</dt>
+					<dd>JavaScript (ES6+) / Service Worker / SASS / GitHub Pages</dd>
+					<dt>設計判断</dt>
+					<dd>
+						サーバーを借りずに済ませるため、Service Workerでリクエストを傍受してJSONから応答を組み立てる擬似APIを実装。
+						用途の異なる3スコープ（標準 / UI向けエンリッチメント付 / ミラー）を出し分けています。
+						型定義（<code>db_type.json</code>）をデータと同じリポジトリに置き、定義自体もAPIから引けるようにしました。
+						DB間・作品間を横断する参照解決エンジンも自前で実装しています。
+					</dd>
+				</dl>
+				<p class="tech-links">
+					<a class="a-link" href="https://database.numbertales-radiann.net/" rel="noopener noreferrer" target="_blank">公開サイト</a>
+					<a class="a-link" href="https://github.com/radiann-kswg/100BeautiesLab_CreationsDB" rel="noopener noreferrer" target="_blank">GitHub リポジトリ</a>
+				</p>
+			</article>
+
+			<article class="tech-card">
+				<h3>QuickPNG シリーズ</h3>
+				<p class="tech-card-summary">画像処理の一括バッチ（Python）</p>
+				<dl class="tech-spec">
+					<dt>課題</dt>
+					<dd>Webサイト用にPNGを毎回手作業で圧縮・書き出ししていて、公開のたびに時間を取られていた。</dd>
+					<dt>技術</dt>
+					<dd>Python</dd>
+					<dt>設計判断</dt>
+					<dd>
+						1本の万能ツールにせず、用途ごとにリポジトリを分けました。
+						「Web向け圧縮」「PSDのスマートオブジェクト書き出し」「減色」はそれぞれ必要な場面が違うためです。
+					</dd>
+				</dl>
+				<p class="tech-links">
+					<a class="a-link" href="https://github.com/radiann-kswg/QuickPNG-Tinize4Web" rel="noopener noreferrer" target="_blank">QuickPNG-Tinize4Web</a>
+					<a class="a-link" href="https://github.com/radiann-kswg/QuickPNG-SmartObjectExport" rel="noopener noreferrer" target="_blank">QuickPNG-SmartObjectExport</a>
+				</p>
+			</article>
+
+			<article class="tech-card">
+				<h3>Plus-Minus-NumberTales</h3>
+				<p class="tech-card-summary">公開中のパズルアクションゲーム（Unity / C#）</p>
+				<dl class="tech-spec">
+					<dt>課題</dt>
+					<dd>ゲームジャムで作った作品を、その場限りで終わらせたくなかった。</dd>
+					<dt>技術</dt>
+					<dd>Unity / C#</dd>
+					<dt>設計判断</dt>
+					<dd>
+						Global Game Jam 2022 の出場作品を土台に、自分の一次創作作品としてリニューアルしました。
+						短期制作物を作り直して公開まで届かせた事例です。
+					</dd>
+				</dl>
+				<p class="tech-links">
+					<a class="a-link" href="https://unityroom.com/games/plus-minus-numbertales" rel="noopener noreferrer" target="_blank">unityroomで遊ぶ</a>
+					<a class="a-link" href="https://github.com/radiann-kswg/Plus-Minus-NumberTales" rel="noopener noreferrer" target="_blank">GitHub リポジトリ</a>
+				</p>
+			</article>
+		</section>
+
+		<section class="tech-section">
+			<h2>創作上の課題 → 作った道具</h2>
+			<p class="tech-note">
+				制作物はいずれも「作りたかったから作った」ものではなく、
+				<strong>創作活動を続けるうえで実際に困ったこと</strong>から生まれています。発注者は自分です。
+			</p>
+			<div class="tech-table-wrap">
+				<table class="tech-table">
+					<thead>
+						<tr><th>創作側の課題</th><th>作った道具</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>設定が膨大で管理できない</td><td>100BeautiesLab_CreationsDB（擬似API付き公開DB）</td></tr>
+						<tr><td>Webサイト用にPNGを毎回圧縮するのが面倒</td><td>QuickPNG シリーズ（Python）</td></tr>
+						<tr><td>SNS用の図柄絵文字を量産したい</td><td>PenchantManufacture_ImageAssets / Secvier_ImageAssets（自作フォント×SVG）</td></tr>
+						<tr><td>キャラクターを動かして発信したい</td><td>NumberTales-MisskeyAIBot</td></tr>
+						<tr><td>同じキャラクターをチャットでもBotでも使いたい</td><td>Tarot-byFateLineDealer（正本を4環境で共有）</td></tr>
+						<tr><td>自分の体調を客観的に把握したい</td><td>APHRNTs_100</td></tr>
+						<tr><td>作品ごとに公式サイトが必要</td><td>各公式サイト（GitHub Pages）</td></tr>
+						<tr><td>数値・占いまわりの設定考証をしたい</td><td>AstroScope / QuaternionViewer / 数字チートシート</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="tech-section">
+			<h2>使用技術</h2>
+			<div class="tech-table-wrap">
+				<table class="tech-table">
+					<tbody>
+						<tr><th>言語</th><td>TypeScript / Python / C# / C++ / JavaScript / HTML・CSS(SASS)</td></tr>
+						<tr><th>フレームワーク等</th><td>Node.js / Vue.js 3 / Unity / vitest</td></tr>
+						<tr><th>インフラ</th><td>GCE / Cloud Run functions / Cloud Scheduler / Cloudflare Workers / GitHub Pages / systemd</td></tr>
+						<tr><th>データ</th><td>SQLite / Service Worker擬似API / JSONスキーマ設計</td></tr>
+						<tr><th>AI協働</th><td>Claude（Desktop / Code / Cowork） / GitHub Copilot / GPT Codex / MCP</td></tr>
+						<tr><th>その他</th><td>Git / GitHub Actions / VRM・Unity(VRChat)</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="tech-section">
+			<h2>運営・チーム開発</h2>
+			<ul class="tech-list">
+				<li>
+					<strong>Misskeyサーバ「shapesky」の管理者</strong> —
+					サーバールールの策定、連合設定、カスタム絵文字の権利主・ライセンス別の仕分け運用、問い合わせ窓口の維持。
+					ホスティング利用の小規模サーバで、現在は試験運用中です。
+				</li>
+				<li>
+					<strong>Misskey AI Bot 3本を運営中</strong> —
+					ナンバーテールズBot、メンタルケアBot「100(モモ)」、タロット占いBot「錦野舞」。
+					稼働状況の監視と、障害時の自動復旧まで含めた運用を行っています。
+				</li>
+				<li><strong>短期チーム開発（ゲームジャム等）に2021年から5回参加</strong> — 短納期・共同作業・公開までの完遂を反復しています。</li>
+				<li><strong>利用条件を明文化したガイドラインを日英2言語で公開・維持</strong> — 権利表記とライセンス設計の運用実績です。</li>
+			</ul>
+		</section>
+
+		<section class="tech-section">
+			<h2>資格</h2>
+			<ul class="tech-list">
+				<li>C言語プログラミング能力認定試験 2級（サーティファイ）</li>
+				<li>情報処理技術者能力認定試験 2級（サーティファイ）</li>
+			</ul>
+		</section>
+
+		<section class="tech-section">
+			<h2>リンク</h2>
+			<ul class="tech-linklist">
+				<li><a class="a-link" href="https://github.com/radiann-kswg" rel="noopener noreferrer" target="_blank">GitHub（radiann-kswg）</a></li>
+				<li><a class="a-link" href="https://database.numbertales-radiann.net/" rel="noopener noreferrer" target="_blank">創作データベース（Service Worker擬似API）</a></li>
+				<li><a class="a-link" href="/index.html">サイトトップ（創作活動・お問い合わせ）</a></li>
+			</ul>
+		</section>
+	</main>
+
+	<footer>
+		<div id="app-credit">
+			<footer-credit></footer-credit>
+		</div>
+		<script src="/src/credit-footer.js"></script>
+	</footer>
+</body>
+
+</html>
