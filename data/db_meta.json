@@ -1,0 +1,66 @@
+{
+  "CreationWorks": [
+    {
+      "workId": "AzurLane",
+      "path": "Works_AzurLane",
+      "WorkLabel": "アズールレーン",
+      "Summary": "アズールレーンの二次創作作品です。",
+      "databases": [
+        {
+          "dbName": "Gallery",
+          "DB_Label": "ギャラリー"
+        }
+      ]
+    },
+    {
+      "workId": "AzurLane",
+      "path": "Works_AzurLane",
+      "WorkLabel": "アズールレーン",
+      "Summary": "アズールレーンの二次創作作品です。",
+      "databases": [
+        {
+          "dbName": "Gallery",
+          "DB_Label": "ギャラリー"
+        }
+      ]
+    },
+    {
+      "workId": "Arknights",
+      "path": "Works_Arknights",
+      "WorkLabel": "アークナイツ",
+      "Summary": "アークナイツ(無印)の二次創作および「SKPORT」での投稿作品です。",
+      "databases": [
+        {
+          "dbName": "Gallery",
+          "DB_Label": "ギャラリー"
+        }
+      ]
+    },
+    {
+      "workId": "ArknightsEndfield",
+      "path": "Works_ArknightsEndfield",
+      "WorkLabel": "アークナイツ：エンドフィールド",
+      "Summary": "アークナイツ：エンドフィールドの二次創作および「SKPORT」での投稿作品です。",
+      "databases": [
+        {
+          "dbName": "Gallery",
+          "DB_Label": "ギャラリー"
+        }
+      ]
+    }
+  ],
+  "General": {
+    "$VarsDef": {
+      "#List_Category": [
+        {
+          "value": "Illustration",
+          "label": "イラスト"
+        },
+        {
+          "value": "Announcement",
+          "label": "告知・公開"
+        }
+      ]
+    }
+  }
+}

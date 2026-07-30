@@ -1991,17 +1991,611 @@ a[href^=http][href^="https://"]::after {
   font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: #1a2332;
   font-size: clamp(1.1rem, 2.6vw, 1.4rem);
+}
+
+.fanworks-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 110px 20px 80px;
+}
+@media screen and (max-width: 480px) {
+  .fanworks-main {
+    padding: 40px 12px 60px;
+  }
+}
+
+.fanworks-hero {
+  margin-bottom: 30px;
+}
+
+.fanworks-lead {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(26, 35, 50, 0.1);
+  padding: 25px;
+  margin: 20px 0;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+.fanworks-lead:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(26, 35, 50, 0.15);
+}
+.fanworks-lead {
+  font-size: 18px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-lead {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-lead {
+    font-size: 14px;
+  }
+}
+.fanworks-lead {
+  text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.fanworks-shell {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(26, 35, 50, 0.1);
+  padding: 25px;
+  margin: 20px 0;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+.fanworks-shell:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(26, 35, 50, 0.15);
+}
+.fanworks-shell {
+  padding: 30px;
+}
+@media screen and (max-width: 480px) {
+  .fanworks-shell {
+    padding: 18px;
+  }
+}
+
+.fanworks-controls {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fanworks-control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.fanworks-control span {
+  font-size: 15px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-control span {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-control span {
+    font-size: 11px;
+  }
+}
+.fanworks-control span {
   font-weight: 700;
-  width: auto;
-  display: block;
+  color: #1a2332;
+}
+.fanworks-control select, .fanworks-control input {
+  font-size: 18px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-control select, .fanworks-control input {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-control select, .fanworks-control input {
+    font-size: 14px;
+  }
+}
+.fanworks-control select, .fanworks-control input {
+  padding: 12px 14px;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #2c3e50;
+  box-shadow: inset 0 1px 3px rgba(26, 35, 50, 0.06);
+}
+
+.fanworks-control-search {
+  grid-column: span 2;
+}
+@media screen and (max-width: 480px) {
+  .fanworks-control-search {
+    grid-column: span 1;
+  }
+}
+
+.fanworks-lang-switch {
+  align-self: stretch;
+}
+
+.fanworks-lang-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.fanworks-lang-buttons button {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 8px 4px;
+  background: linear-gradient(135deg, #2c3e50 0%, rgb(62.0967741935, 87.5, 112.9032258065) 100%);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+}
+.fanworks-lang-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+  background: linear-gradient(135deg, #3498db 0%, rgb(116.9769874477, 184.9686192469, 230.5230125523) 100%);
+  text-decoration: none;
+}
+.fanworks-lang-buttons button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(44, 62, 80, 0.4);
+}
+@media screen and (max-width: 480px) {
+  .fanworks-lang-buttons button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
+.fanworks-lang-buttons button {
+  padding: 12px 0;
+  font-weight: 700;
+}
+.fanworks-lang-buttons button.active {
+  background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
+  box-shadow: 0 10px 22px rgba(52, 152, 219, 0.28);
+}
+
+.fanworks-summary {
+  font-size: 18px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-summary {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-summary {
+    font-size: 14px;
+  }
+}
+.fanworks-summary {
+  margin: 0 0 24px 0;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.08) 0%, rgba(93, 173, 226, 0.16) 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(52, 152, 219, 0.15);
+}
+
+.fanworks-loading, .fanworks-error {
+  font-size: 18px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-loading, .fanworks-error {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-loading, .fanworks-error {
+    font-size: 14px;
+  }
+}
+.fanworks-loading, .fanworks-error {
+  text-align: center;
+  padding: 22px;
+  border-radius: 14px;
+  background: rgba(248, 249, 250, 0.9);
+}
+
+.fanworks-error {
+  color: #9f2f2f;
+  background: rgba(255, 237, 237, 0.95);
+}
+
+.fanworks-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.9fr);
+  gap: 22px;
+  align-items: start;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fanworks-results-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.fanworks-results-head p {
+  font-size: 15px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-results-head p {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-results-head p {
+    font-size: 11px;
+  }
+}
+.fanworks-results-head p {
+  margin: 0;
+  color: #6c757d;
+}
+
+.fanworks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.fanwork-card {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(26, 35, 50, 0.1);
+  padding: 25px;
+  margin: 20px 0;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+.fanwork-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(26, 35, 50, 0.15);
+}
+.fanwork-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  width: 100%;
   text-align: left;
+  background: #ffffff;
+  cursor: pointer;
+}
+.fanwork-card.active {
+  border-color: #3498db;
+  box-shadow: 0 16px 34px rgba(52, 152, 219, 0.18);
+}
+
+.fanwork-card-image {
+  aspect-ratio: 4/3;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.95) 0%, rgba(52, 152, 219, 0.85) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fanwork-card-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0;
+  box-shadow: none;
+}
+.fanwork-card-image.is-empty span {
+  font-size: 15px;
+}
+@media screen and (max-width: 896px) {
+  .fanwork-card-image.is-empty span {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanwork-card-image.is-empty span {
+    font-size: 11px;
+  }
+}
+.fanwork-card-image.is-empty span {
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fanwork-card-body h3 {
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  background: none;
+  box-shadow: none;
+  width: auto;
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: #1a2332;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  border: none;
+}
+.fanwork-card-body p {
+  font-size: 15px;
+}
+@media screen and (max-width: 896px) {
+  .fanwork-card-body p {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanwork-card-body p {
+    font-size: 11px;
+  }
+}
+.fanwork-card-body p {
+  margin: 0;
+  color: #6c757d;
+}
+
+.fanwork-card-meta {
+  font-size: 15px;
+}
+@media screen and (max-width: 896px) {
+  .fanwork-card-meta {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanwork-card-meta {
+    font-size: 11px;
+  }
+}
+.fanwork-card-meta {
   margin: 0 0 8px 0;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3498db;
+}
+
+.fanwork-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.fanwork-tag-list li {
+  font-size: 15px;
+}
+@media screen and (max-width: 896px) {
+  .fanwork-tag-list li {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanwork-tag-list li {
+    font-size: 11px;
+  }
+}
+.fanwork-tag-list li {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(52, 152, 219, 0.12);
+  color: #2c3e50;
+}
+
+.fanworks-detail {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(26, 35, 50, 0.1);
+  padding: 25px;
+  margin: 20px 0;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+.fanworks-detail:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(26, 35, 50, 0.15);
+}
+.fanworks-detail {
+  position: sticky;
+  top: 105px;
+  padding: 22px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-detail {
+    position: static;
+  }
+}
+
+.fanworks-detail-head {
+  margin-bottom: 20px;
+}
+.fanworks-detail-head h2 {
+  margin-top: 0;
+}
+.fanworks-detail-head p {
+  font-size: 18px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-detail-head p {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-detail-head p {
+    font-size: 14px;
+  }
+}
+
+.fanworks-detail-section {
+  margin-top: 18px;
+}
+.fanworks-detail-section h3 {
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  width: auto;
+  margin: 0 0 14px 0;
   padding: 0 0 10px 0;
   background: none;
-  background-color: transparent;
   box-shadow: none;
   border: none;
   border-bottom: 2px solid #dee2e6;
+  color: #1a2332;
+}
+
+.fanworks-detail-list {
+  display: grid;
+  gap: 12px;
+}
+.fanworks-detail-list div {
+  padding: 12px 14px;
+  background: rgba(248, 249, 250, 0.9);
+  border-radius: 12px;
+}
+.fanworks-detail-list dt {
+  font-size: 15px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-detail-list dt {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-detail-list dt {
+    font-size: 11px;
+  }
+}
+.fanworks-detail-list dt {
+  font-weight: 700;
+  color: #1a2332;
+}
+.fanworks-detail-list dd {
+  font-size: 18px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-detail-list dd {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-detail-list dd {
+    font-size: 14px;
+  }
+}
+.fanworks-detail-list dd {
+  margin-top: 4px;
+}
+
+.fanworks-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.fanworks-gallery-image {
+  min-height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(248, 249, 250, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fanworks-gallery-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 0;
+  box-shadow: none;
+}
+.fanworks-gallery-image.is-empty {
+  padding: 20px;
+  text-align: center;
+}
+.fanworks-gallery-image.is-empty span {
+  font-size: 15px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-gallery-image.is-empty span {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-gallery-image.is-empty span {
+    font-size: 11px;
+  }
+}
+.fanworks-gallery-image.is-empty span {
+  color: #6c757d;
+}
+
+.fanworks-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.fanworks-link-list p {
+  margin: 0;
+}
+
+.fanworks-empty {
+  font-size: 18px;
+}
+@media screen and (max-width: 896px) {
+  .fanworks-empty {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .fanworks-empty {
+    font-size: 14px;
+  }
+}
+.fanworks-empty {
+  text-align: center;
+  padding: 28px 20px;
+  border-radius: 14px;
+  background: rgba(248, 249, 250, 0.9);
+  background-font-weight: 700;
+  background-width: auto;
+  background-display: block;
+  background-text-align: left;
+  background-margin: 0 0 8px 0;
+  background-padding: 0 0 10px 0;
+  background-background: none;
+  background-background-color: transparent;
+  background-box-shadow: none;
+  background-border: none;
+  background-border-bottom: 2px solid #dee2e6;
 }
 
 .tech-badge {
