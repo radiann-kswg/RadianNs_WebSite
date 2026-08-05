@@ -202,6 +202,8 @@ h3 {
   box-sizing: border-box;
   background-color: white;
   font-weight: bold;
+  word-break: normal;
+  line-break: strict;
   box-shadow: 5px 5px 5px slategrey;
   margin-left: 5px;
   margin-bottom: 20px;
@@ -310,16 +312,16 @@ h3.h3-a-link-commingsoon:hover {
   opacity: 0.8;
 }
 h3.h3-wide {
-  width: 235px;
+  width: 260px;
 }
 @media screen and (max-width: 896px) {
   h3.h3-wide {
-    width: 210px;
+    width: 240px;
   }
 }
 @media screen and (max-width: 480px) {
   h3.h3-wide {
-    width: 185px;
+    width: 220px;
   }
 }
 
@@ -633,16 +635,16 @@ a.a-link-commingsoon:hover {
   opacity: 0.8;
 }
 .list2 h3.h3-wide {
-  width: 85%;
+  width: 92%;
 }
 @media screen and (max-width: 896px) {
   .list2 h3.h3-wide {
-    width: 210px;
+    width: 240px;
   }
 }
 @media screen and (max-width: 480px) {
   .list2 h3.h3-wide {
-    width: 185px;
+    width: 220px;
   }
 }
 .list2 a {

@@ -296,6 +296,8 @@ h3
 	@include h-boxdesign(3px, darkcyan , 180px)
 	background-color: white
 	font-weight: bold
+	word-break: normal
+	line-break: strict
 	box-shadow: 5px 5px 5px slategrey
 	margin-left: 5px
 	margin-bottom: 20px
@@ -321,11 +323,11 @@ h3
 		&:hover
 			opacity: $opacity
 	&.h3-wide
-		width: 235px
+		width: 260px
 		@media screen and (max-width:$responsive-midiumsize)
-			width: 210px
+			width: 240px
 		@media screen and (max-width:$responsive-smallsize)
-			width: 185px
+			width: 220px
 
 p
 	@include smallest-font
@@ -416,11 +418,11 @@ a
 			&:hover
 				opacity: $opacity
 		&.h3-wide
-			width: 85%
+			width: 92%
 			@media screen and (max-width:$responsive-midiumsize)
-				width: 210px
+				width: 240px
 			@media screen and (max-width:$responsive-smallsize)
-				width: 185px
+				width: 220px
 	a
 		margin: 5px 5px
 
