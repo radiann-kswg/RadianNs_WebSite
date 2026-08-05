@@ -1991,6 +1991,17 @@ a[href^=http][href^="https://"]::after {
   font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: #1a2332;
   font-size: clamp(1.1rem, 2.6vw, 1.4rem);
+  font-weight: 700;
+  width: auto;
+  display: block;
+  text-align: left;
+  margin: 0 0 8px 0;
+  padding: 0 0 10px 0;
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  border-bottom: 2px solid #dee2e6;
 }
 
 .fanworks-main {
@@ -2585,17 +2596,6 @@ a[href^=http][href^="https://"]::after {
   padding: 28px 20px;
   border-radius: 14px;
   background: rgba(248, 249, 250, 0.9);
-  background-font-weight: 700;
-  background-width: auto;
-  background-display: block;
-  background-text-align: left;
-  background-margin: 0 0 8px 0;
-  background-padding: 0 0 10px 0;
-  background-background: none;
-  background-background-color: transparent;
-  background-box-shadow: none;
-  background-border: none;
-  background-border-bottom: 2px solid #dee2e6;
 }
 
 .tech-badge {
