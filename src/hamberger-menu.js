@@ -17,7 +17,6 @@ Vue.createApp({})
 			<div class="menu" v-show="ActiveBtn">
 				<ul>
 					<li><a href="/index.html">サイトトップ / Site Top</a></li>
-					<li><a href="/pages/fanworks-gallery.html">ギャラリー / Fanworks Gallery</a></li>
 					<li><a href="/tech/index.html">技術ポートフォリオ / Tech Portfolio</a></li>
 					<li><a href="https://database.numbertales-radiann.net/">創作データベース/Creation Databases</a></li>
 					<li><a href="https://numbertales-radiann.com/">ナンバーテールズ公式サイト/NumberTales Official</a></li>
@@ -29,7 +28,6 @@ Vue.createApp({})
 					<li><a href="https://radiann-kswg.fanbox.cc/">pixivFANBOX</a></li>
 					<li><a href="https://radiann-kswg.booth.pm/">BOOTH</a></li>
 					<li><a href="https://line.me/S/shop/sticker/author/4775486/ja">LINEスタンプ / LINE Stickers</a></li>
-					<li><a href="https://www.skport.com/profile?id=8931867451568">SKPORT</a></li>
 				</ul>
 			</div>
 		</transition>`,
