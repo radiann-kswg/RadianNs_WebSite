@@ -18,10 +18,11 @@ Vue.createApp({})
 				<ul>
 					<li><a href="/index.html">サイトトップ / Site Top</a></li>
 					<li><a href="/tech/index.html">技術ポートフォリオ / Tech Portfolio</a></li>
-					<li><a href="https://database.numbertales-radiann.net/">創作データベース/Creation Databases</a></li>
+					<li><a href="https://database.numbertales-radiann.net/">一次創作データベース/My Creation Databases</a></li>
 					<li><a href="https://numbertales-radiann.com/">ナンバーテールズ公式サイト/NumberTales Official</a></li>
 					<li><a href="https://fateline-investigator78.com/">運命線探偵78公式サイト/FateLine Investigator 78 Official</a></li>
 					<li><a href="https://www.shouar-riders.com/">獣爾騎兵 公式サイト/Shou'ar Riders Official</a></li>
+					<li><a href="https://secondary-work.numbertales-radiann.jp/">二次創作データベース/Secondary Artwork Databases</a></li>
 					<li><a href="https://github.com/radiann-kswg">GitHub</a></li>
 					<li><a href="https://unityroom.com/users/radiann_kswg">unityroom</a></li>
 					<li><a href="https://www.pixiv.net/users/44375569/">pixiv</a></li>
