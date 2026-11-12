@@ -7,7 +7,7 @@
 
 @.github/_shared/project-spec.md
 
-@.github/_roleplay-datas/roleplay-prompt.md
+@SOUL.md
 
 ## Claude 固有事項
 
