@@ -35,16 +35,15 @@ header
 	backdrop-filter: blur(10px)
 	border-bottom: 1px solid $border-gray
 	box-shadow: 0 2px 10px $shadow-color
-	position: fixed
+	position: sticky
 	top: 0
 	left: 0
 	width: 100%
 	z-index: 1000
-	padding: 10px 0
+	padding: 10px 20px
 	@media screen and (max-width:$responsive-smallsize)
-		position: relative
 		width: 100%
-		padding: 5px 0
+		padding: 5px 12px
 
 img
 	display: block
@@ -380,6 +379,7 @@ a
 .list1
 	@include card-style
 	width: 100%
+	min-width: 0
 	max-width: 800px
 	margin: 0 auto 20px
 	text-align: left
@@ -391,11 +391,13 @@ a
 		margin: 0 auto 10px
 
 .list2
-	display: inline
+	display: block
 	text-align: center
 	width: 100%
+	overflow-wrap: anywhere
 	h3
 		display: inline-block
+		max-width: calc(100% - 20px)
 		background-color: white
 		font-weight: normal
 		margin-left: 15px
@@ -425,6 +427,7 @@ a
 				width: 220px
 	a
 		margin: 5px 5px
+		max-width: calc(100% - 10px)
 
 .character0
 	@include div-dualblock0
@@ -646,52 +649,57 @@ footer
 // https://qiita.com/helloworld193/items/9aed3870be1e739c3ad2 (改変済)
 // モダンなハンバーガーメニューボタン
 .hamburger_btn
-	position: fixed
-	top: 15px
-	right: 20px
+	position: relative
+	display: flex
+	align-items: center
+	justify-content: center
+	width: min(250px, 100%)
+	min-height: 75px
+	margin-left: auto
+	padding: 15px 20px
+	font-size: 1.5rem
+	font-weight: 600
+	color: $primary-navy
+	background: linear-gradient(135deg, $pure-white 0%, $light-gray 100%)
+	border-left: 5px solid $accent-blue
+	border-radius: 8px
+	box-shadow: 0 4px 15px $shadow-color
+	cursor: pointer
 	z-index: 1001
-	h2
-		display: inline-flex
-		margin: 10px
-		width: 250px
-		height: 75px
-		font-size: 18pt
-		justify-content: center
-		text-align: right
-		align-items: center
-		box-sizing: border-box
-		.hamburger_icon
-			margin-left: 15px
-			width: 50px
-			height: 50px
-			cursor: pointer
-			background: rgba($pure-white, 0.95)
-			border-radius: 50%
-			box-shadow: 0 4px 15px $shadow-color
-			backdrop-filter: blur(10px)
-			display: inline-flex
-			align-items: center
-			justify-content: center
-			transition: all 0.3s ease
-			&:hover
-				transform: scale(1.1)
-				box-shadow: 0 6px 20px rgba($primary-navy, 0.2)
-			.line
-				position: absolute
-				width: 24px
-				height: 2px
-				background: $primary-navy
-				border-radius: 1px
-				transition: all 0.3s ease
-			.line_01
-				top: 18px
-				transition: 0.3s ease
-			.line_02
-				top: 24px
-				transition: 0.3s ease
-			.line_03
-				top: 30px
-				transition: 0.3s ease
+	&:focus-visible
+		outline: 3px solid $accent-blue
+		outline-offset: 3px
+
+.hamburger_icon
+	position: relative
+	margin-left: 15px
+	width: 50px
+	height: 50px
+	flex-shrink: 0
+	background: rgba($pure-white, 0.95)
+	border-radius: 50%
+	box-shadow: 0 4px 15px $shadow-color
+	backdrop-filter: blur(10px)
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	transition: all 0.3s ease
+	&:hover
+		transform: scale(1.1)
+		box-shadow: 0 6px 20px rgba($primary-navy, 0.2)
+	.line
+		position: absolute
+		width: 24px
+		height: 2px
+		background: $primary-navy
+		border-radius: 1px
+		transition: all 0.3s ease
+	.line_01
+		top: 18px
+	.line_02
+		top: 24px
+	.line_03
+		top: 30px
 
 .btn_line01
 	transform: translateY(6px) rotate(-45deg)
@@ -840,34 +848,27 @@ footer
 	color: $medium-gray
 	margin-top: 5px
 
-// お問い合わせフォーム - 強制スタイル適用
-.contact-form
-	.checkbox-group
-		.checkbox-label
-			display: flex !important
-			align-items: center !important
-			justify-content: flex-start
-			gap: 12px
-			cursor: pointer
-			font-size: 0.95rem
-			line-height: 1.5
-			min-height: 24px
-			vertical-align: middle
-
 .checkbox-group
 	.checkbox-label
-		display: flex !important
-		align-items: center !important
+		position: relative
+		display: flex
+		align-items: center
 		gap: 12px
 		cursor: pointer
 		font-size: 0.95rem
 		line-height: 1.5
 		min-height: 24px
-		vertical-align: middle
+	.checkbox-text
+		flex: 1
+		min-width: 0
+		overflow-wrap: anywhere
 
 .contact-form .form-checkbox,
 .form-checkbox
-	position: relative
+	position: absolute
+	left: 0
+	top: 50%
+	transform: translateY(-50%)
 	width: 20px
 	height: 20px
 	margin: 0 !important
@@ -906,6 +907,10 @@ footer
 	border-color: $accent-blue
 	&::after
 		display: block
+
+.form-checkbox:focus-visible + .checkmark
+	outline: 3px solid $accent-blue
+	outline-offset: 3px
 
 .privacy-link
 	color: $accent-blue
@@ -1019,6 +1024,8 @@ footer
 		opacity: 1
 
 .modal-content
+	display: flex
+	flex-direction: column
 	background: $pure-white
 	border-radius: 20px
 	max-width: 700px
@@ -1048,6 +1055,8 @@ footer
 
 .modal-header
 	display: flex
+	flex-shrink: 0
+	gap: 12px
 	justify-content: space-between
 	align-items: center
 	padding: 30px 35px 20px
@@ -1056,6 +1065,13 @@ footer
 	h3
 		color: $primary-navy
 		margin: 0
+		padding: 0
+		width: auto
+		min-width: 0
+		flex: 1
+		border: none
+		box-shadow: none
+		text-align: left
 		font-size: clamp(1.3rem, 3vw, 1.8rem)
 		font-weight: 700
 		background: linear-gradient(135deg, $primary-navy 0%, $accent-blue 100%)
@@ -1064,6 +1080,7 @@ footer
 		background-clip: text
 
 .modal-close
+	flex-shrink: 0
 	background: rgba($medium-gray, 0.1)
 	border: 2px solid transparent
 	border-radius: 50%
@@ -1085,7 +1102,7 @@ footer
 
 .modal-body
 	padding: 35px
-	max-height: calc(85vh - 120px)
+	min-height: 0
 	overflow-y: auto
 	&::-webkit-scrollbar
 		width: 6px
@@ -1186,7 +1203,7 @@ footer
 		line-height: 1.5
 
 // 外部リンクの安全性表示
-a[href^="http"]
+a[href^="http"]:not(:has(> h2, > img))
 	&::after
 		content: " ↗"
 		font-size: 0.8em

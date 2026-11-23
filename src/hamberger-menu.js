@@ -3,18 +3,17 @@
 Vue.createApp({})
 	.component("hamberger-menu", {
 		template: `<!--ハンバーガーメニューのボタン-->
-		<div class="hamburger_btn" v-on:click='ActiveBtn=!ActiveBtn'>
-			<h2>リンク一覧
-				<div class="hamburger_icon">
+		<button type="button" class="hamburger_btn" ref="menuToggle" v-on:click="ActiveBtn=!ActiveBtn" :aria-expanded="ActiveBtn" aria-controls="site-links" @keydown.esc="closeMenu">
+			<span>リンク一覧</span>
+				<span class="hamburger_icon" aria-hidden="true">
 					<span class="line line_01" v-bind:class="{'btn_line01':ActiveBtn}"></span>
 					<span class="line line_02" v-bind:class="{'btn_line02':ActiveBtn}"></span>
 					<span class="line line_03" v-bind:class="{'btn_line03':ActiveBtn}"></span>
-				</div>
-			</h2>
-		</div>
+				</span>
+		</button>
 		<!--サイドバー-->
 		<transition name="menu">
-			<div class="menu" v-show="ActiveBtn">
+			<nav id="site-links" class="menu" aria-label="リンク一覧" v-show="ActiveBtn" @keydown.esc="closeMenu">
 				<ul>
 					<li><a href="/index.html">サイトトップ / Site Top</a></li>
 					<!-- <li><a href="/tech/index.html">技術ポートフォリオ / Tech Portfolio</a></li> -->
@@ -30,12 +29,18 @@ Vue.createApp({})
 					<li><a href="https://radiann-kswg.booth.pm/">BOOTH</a></li>
 					<li><a href="https://line.me/S/shop/sticker/author/4775486/ja">LINEスタンプ / LINE Stickers</a></li>
 				</ul>
-			</div>
+			</nav>
 		</transition>`,
 		data() {
 			return {
 				ActiveBtn: false,
 			};
+		},
+		methods: {
+			closeMenu() {
+				this.ActiveBtn = false;
+				this.$refs.menuToggle.focus();
+			},
 		},
 	})
 	.mount("#app-menu");

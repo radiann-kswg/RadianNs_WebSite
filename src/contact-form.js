@@ -90,10 +90,12 @@ const contactFormComponent = {
             :class="{ 'error': errors.privacyAccepted }"
             required
           />
-          <span class="checkmark"></span>
-          <a href="#" @click.prevent="showPrivacyPolicy = true" class="privacy-link">
-            プライバシーポリシー
-          </a>に同意する <span class="required">*</span>
+          <span class="checkmark" aria-hidden="true"></span>
+          <span class="checkbox-text">
+            <a href="#" @click.prevent="showPrivacyPolicy = true" class="privacy-link">
+              プライバシーポリシー
+            </a>に同意する <span class="required">*</span>
+          </span>
         </label>
         <span v-if="errors.privacyAccepted" class="error-message">{{ errors.privacyAccepted }}</span>
       </div>
@@ -149,6 +151,7 @@ const contactFormComponent = {
           <p>お問い合わせ内容は回答後1年保存し、その後 個人情報にあたる箇所を削除いたします。</p>
         </div>
       </div>
+    </div>
     </div>`,
 	data() {
 		return {
