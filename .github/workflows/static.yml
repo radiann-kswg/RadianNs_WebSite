@@ -22,22 +22,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  # アーティファクトの作成とデプロイを別ジョブに分ける。
+  # 同じジョブ内でアップロード直後に deploy-pages が一覧を取りに行くと、
+  # 登録の反映が間に合わず "No artifacts named github-pages" で失敗することがある
+  # （2026-11-24 の run 45305395991）。
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          # リポジトリ全体を公開する。v5 は .git / .github に加えて
+          # ドットで始まるファイル・フォルダ（.claude / .agents / .gitignore など）を既定で除外する。
+          path: '.'
+
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
