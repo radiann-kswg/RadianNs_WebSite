@@ -4,18 +4,20 @@
 	font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif
 	box-sizing: border-box
 
-// カラーパレット（参考サイトに合わせた紺色・白色基調）
-$primary-navy: #1a2332
-$secondary-navy: #2c3e50
-$light-navy: #34495e
-$accent-blue: #3498db
-$light-blue: #5dade2
+// 計測コンソール風のライトテーマ
+$primary-navy: #142f46
+$secondary-navy: #244766
+$light-navy: #406079
+$accent-blue: #00677b
+$light-blue: #2057a1
 $pure-white: #ffffff
-$light-gray: #f8f9fa
-$medium-gray: #6c757d
-$border-gray: #dee2e6
-$text-dark: #2c3e50
-$shadow-color: rgba(26, 35, 50, 0.1)
+$light-gray: #f0f6f9
+$medium-gray: #506677
+$border-gray: #bed2dd
+$text-dark: #213b4e
+$shadow-color: rgba($primary-navy, 0.06)
+$grid-line: rgba($accent-blue, 0.055)
+$mono: ui-monospace, "Cascadia Code", Consolas, Meiryo, monospace
 
 // レスポンシブブレークポイント
 $responsive-midiumsize: 896px
@@ -25,7 +27,11 @@ $responsive-smallsize: 480px
 	font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif
 
 body
-	background: linear-gradient(135deg, $pure-white 0%, $light-gray 100%)
+	color-scheme: light
+	background-color: $light-gray
+	background-image: linear-gradient($grid-line 1px, transparent 1px), linear-gradient(90deg, $grid-line 1px, transparent 1px)
+	background-size: 44px 44px
+	background-repeat: repeat
 	color: $text-dark
 	line-height: 1.6
 	min-height: 100vh
@@ -49,7 +55,7 @@ img
 	display: block
 	margin: 10px auto
 	width: 85%
-	box-shadow: 6px 6px 4px slategrey
+	box-shadow: none
 	vertical-align: top
 	box-sizing: border-box
 	@media screen and (max-width:$responsive-midiumsize)
@@ -133,24 +139,20 @@ ul
 	display: inline-block
 	padding: 12px 24px
 	margin: 8px 4px
-	background: linear-gradient(135deg, $bg-color 0%, lighten($bg-color, 10%) 100%)
+	background: $bg-color
 	color: $text-color
 	text-decoration: none
-	border-radius: 25px
-	box-shadow: 0 4px 15px rgba($bg-color, 0.3)
-	transition: all 0.3s ease
+	border-radius: 4px
+	transition: background-color 140ms ease
 	font-weight: 600
 	font-size: 0.9rem
 	border: none
 	cursor: pointer
 	&:hover
-		transform: translateY(-2px)
-		box-shadow: 0 8px 25px rgba($hover-color, 0.4)
-		background: linear-gradient(135deg, $hover-color 0%, lighten($hover-color, 15%) 100%)
+		background: $hover-color
 		text-decoration: none
 	&:active
-		transform: translateY(0)
-		box-shadow: 0 2px 10px rgba($bg-color, 0.4)
+		background: darken($hover-color, 6%)
 	@media screen and (max-width:$responsive-smallsize)
 		padding: 10px 20px
 		font-size: 0.85rem
@@ -186,15 +188,11 @@ ul
 // カードデザインmixin
 @mixin card-style
 	background: $pure-white
-	border-radius: 15px
-	box-shadow: 0 8px 25px $shadow-color
+	border-radius: 4px
+	box-shadow: 0 2px 8px $shadow-color
 	padding: 25px
 	margin: 20px 0
 	border: 1px solid $border-gray
-	transition: all 0.3s ease
-	&:hover
-		transform: translateY(-5px)
-		box-shadow: 0 15px 40px rgba($primary-navy, 0.15)
 
 $opacity: 0.8
 
@@ -229,14 +227,11 @@ $opacity: 0.8
 		font-size: 10px
 
 h1
-	@include font-sansserif
+	font-family: $mono
 	font-weight: 700
-	background: linear-gradient(135deg, $primary-navy 0%, $accent-blue 100%)
-	-webkit-background-clip: text
-	-webkit-text-fill-color: transparent
-	background-clip: text
-	padding: 60px 20px 40px
-	margin: 0 0 30px 0
+	color: $primary-navy
+	padding: 40px 20px 32px
+	margin: 0 0 20px
 	text-align: center
 	font-size: clamp(1.5rem, 5vw, 3rem)
 	width: 100%
@@ -256,6 +251,40 @@ h1
 		font-size: 1.5rem
 	&.h1-noimg
 		padding-bottom: 30px
+
+.official-links
+	display: grid
+	grid-template-columns: repeat(2, minmax(0, 1fr))
+	gap: 8px
+	width: min(90%, 800px)
+	margin: auto
+	a
+		text-decoration: none
+	a:first-child
+		grid-column: 1 / -1
+	h2.h2-a-link
+		display: grid
+		grid-template-columns: minmax(0, 1fr) auto
+		align-items: center
+		gap: 8px
+		text-align: left
+		height: 100%
+		max-width: none
+		margin: 0
+		background: $pure-white
+		color: $accent-blue
+		border: 1px solid $border-gray
+		border-left: 3px solid $accent-blue
+		box-shadow: none
+	a:hover h2, a:focus-visible h2
+		background: $light-gray
+		border-color: $accent-blue
+	@media screen and (max-width:$responsive-smallsize)
+		grid-template-columns: 1fr
+
+:focus-visible
+	outline: 3px solid $light-blue
+	outline-offset: 3px
 
 h2
 	@include font-sansserif
@@ -391,17 +420,23 @@ a
 		margin: 0 auto 10px
 
 .list2
-	display: block
-	text-align: center
+	display: grid
+	grid-template-columns: minmax(0, 2fr) minmax(0, 3fr)
+	column-gap: clamp(16px, 3vw, 32px)
+	align-content: start
 	width: 100%
 	overflow-wrap: anywhere
+	@media screen and (max-width:$responsive-midiumsize)
+		grid-template-columns: minmax(0, 1fr)
 	h3
-		display: inline-block
-		max-width: calc(100% - 20px)
-		background-color: white
-		font-weight: normal
-		margin-left: 15px
-		width: 65%
+		grid-column: 1 / -1
+		margin: 0 0 16px
+		padding-bottom: 8px
+		color: $primary-navy
+		text-align: left
+		font-weight: 700
+		box-shadow: none
+		border-bottom: 1px solid $border-gray
 		&.h3-small
 			width: 85%
 			margin: 12px 5px auto auto
@@ -420,14 +455,36 @@ a
 			&:hover
 				opacity: $opacity
 		&.h3-wide
-			width: 92%
-			@media screen and (max-width:$responsive-midiumsize)
-				width: 240px
-			@media screen and (max-width:$responsive-smallsize)
-				width: 220px
+			width: 100%
 	a
 		margin: 5px 5px
 		max-width: calc(100% - 10px)
+
+.activity-media
+	align-self: start
+	background: $light-gray
+	border: 1px solid $border-gray
+	border-radius: 4px
+	a
+		display: block
+		max-width: none
+		margin: 0
+	img
+		width: 100%
+		max-height: 18rem
+		margin: 0
+		object-fit: contain
+
+.activity-copy
+	min-width: 0
+	h3 + &
+		grid-column: 1 / -1
+	p
+		font-size: 1rem
+		line-height: 1.75
+		margin-bottom: 0.75em
+	@media screen and (max-width:$responsive-midiumsize)
+		margin-top: 12px
 
 .character0
 	@include div-dualblock0
@@ -566,8 +623,9 @@ iframe
 
 footer
 	text-align: center
-	background: linear-gradient(135deg, $primary-navy 0%, $secondary-navy 100%)
-	color: $pure-white
+	background: $pure-white
+	color: $text-dark
+	border-top: 1px solid $border-gray
 	padding: 40px 20px 20px
 	margin-top: 60px
 	width: 100%
@@ -618,10 +676,10 @@ footer
 	max-width: 1000px
 	margin: 0 auto 30px
 	max-height: 600px
-	background: $pure-white
+	background: $light-gray
 	border: 1px solid $border-gray
-	border-radius: 15px
-	box-shadow: 0 10px 30px $shadow-color
+	border-radius: 4px
+	box-shadow: 0 2px 8px $shadow-color
 	overflow: hidden
 	position: relative
 	&::-webkit-scrollbar
@@ -637,13 +695,19 @@ footer
 	.scroll-content
 		max-height: 600px
 		overflow-y: auto
-		padding: 30px
+		padding: clamp(8px, 2vw, 24px)
+	.list0
+		padding: 0
 	h2
-		color: $primary-navy
-		margin: 20px 0
-		padding: 15px 0
-		border-bottom: 2px solid $border-gray
-		text-align: center
+		font-family: $mono
+		color: $accent-blue
+		margin: 12px auto
+		max-width: 800px
+		padding: 4px 12px
+		background: transparent
+		border-radius: 0
+		box-shadow: none
+		text-align: left
 		font-weight: 600
 
 // https://qiita.com/helloworld193/items/9aed3870be1e739c3ad2 (改変済)
@@ -653,17 +717,16 @@ footer
 	display: flex
 	align-items: center
 	justify-content: center
-	width: min(250px, 100%)
-	min-height: 75px
+	width: fit-content
+	min-height: 44px
 	margin-left: auto
-	padding: 15px 20px
-	font-size: 1.5rem
+	padding: 4px 12px
+	font-size: 1rem
 	font-weight: 600
 	color: $primary-navy
-	background: linear-gradient(135deg, $pure-white 0%, $light-gray 100%)
-	border-left: 5px solid $accent-blue
-	border-radius: 8px
-	box-shadow: 0 4px 15px $shadow-color
+	background: $pure-white
+	border: 1px solid $border-gray
+	border-radius: 4px
 	cursor: pointer
 	z-index: 1001
 	&:focus-visible
@@ -673,20 +736,12 @@ footer
 .hamburger_icon
 	position: relative
 	margin-left: 15px
-	width: 50px
-	height: 50px
+	width: 24px
+	height: 32px
 	flex-shrink: 0
-	background: rgba($pure-white, 0.95)
-	border-radius: 50%
-	box-shadow: 0 4px 15px $shadow-color
-	backdrop-filter: blur(10px)
 	display: inline-flex
 	align-items: center
 	justify-content: center
-	transition: all 0.3s ease
-	&:hover
-		transform: scale(1.1)
-		box-shadow: 0 6px 20px rgba($primary-navy, 0.2)
 	.line
 		position: absolute
 		width: 24px
@@ -695,11 +750,11 @@ footer
 		border-radius: 1px
 		transition: all 0.3s ease
 	.line_01
-		top: 18px
+		top: 9px
 	.line_02
-		top: 24px
+		top: 15px
 	.line_03
-		top: 30px
+		top: 21px
 
 .btn_line01
 	transform: translateY(6px) rotate(-45deg)
@@ -768,7 +823,7 @@ footer
 
 // お問い合わせフォームのスタイル
 .contact-section
-	background: linear-gradient(135deg, $light-gray 0%, $pure-white 100%)
+	border-top: 1px solid $border-gray
 	padding: 60px 20px
 	margin: 0
 
@@ -778,6 +833,9 @@ footer
 
 .contact-title
 	text-align: center
+	font-family: $mono
+	background: $pure-white
+	border-radius: 4px
 	color: $primary-navy
 	font-size: clamp(1.8rem, 4vw, 2.5rem)
 	margin-bottom: 20px
@@ -822,8 +880,8 @@ footer
 .form-input, .form-select, .form-textarea
 	width: 100%
 	padding: 12px 16px
-	border: 2px solid $border-gray
-	border-radius: 8px
+	border: 1px solid $medium-gray
+	border-radius: 4px
 	font-size: 1rem
 	transition: all 0.3s ease
 	background: $pure-white
@@ -1176,11 +1234,9 @@ footer
 			font-size: 0.95rem
 
 // セキュリティ強化のための視覚的表示
-.secure-connection
-	&::before
-		content: "🔒"
-		margin-right: 5px
-		color: $accent-blue
+.secure-connection::after
+	content: " ↗"
+	color: $accent-blue
 
 .form-security-notice
 	background: linear-gradient(135deg, rgba($accent-blue, 0.1) 0%, rgba($light-blue, 0.05) 100%)
@@ -1207,11 +1263,8 @@ a[href^="http"]:not(:has(> h2, > img))
 	&::after
 		content: " ↗"
 		font-size: 0.8em
-		color: $medium-gray
+		color: inherit
 		margin-left: 2px
-
-	&[href^="https://"]::after
-		content: " 🔒↗"
 
 // セキュリティ警告表示
 .security-warning

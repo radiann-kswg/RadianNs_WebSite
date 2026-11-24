@@ -40,7 +40,7 @@
 	</header>
 	<main id="app-list-comp">
 		<h1>ラジアン(柏木主税)<br />「百花繚乱研究所」</h1>
-		<div>
+		<nav class="official-links" aria-label="作品公式サイトとデータベース">
 			<a href="https://database.numbertales-radiann.net/" rel="noopener noreferrer" target="_blank">
 				<h2 class="h2-a-link secure-connection">
 					創作ガイドライン＆創作データベースはこちら
@@ -71,116 +71,166 @@
 					技術ポートフォリオはこちら
 				</h2>
 			</a> -->
-		</div>
+		</nav>
 		<h1 class="h1-noimg">活動履歴</h1>
 		<div data-custom-scroll-root>
 			<custom-scroll>
 				<h2>進行中</h2>
 				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「shapesky(しぇいぷすきー)」<br />運営中！</template><template #images><a href="https://shapesky.xsns.jp/"><img alt="画像が見つかりませんでした" src="/img/released-service/shapesky-released.png" /></a></template>
+					<list-comp wide-style>
+						<template #title>「shapesky(しぇいぷすきー)」<br />運営中！</template><template #images><a href="https://shapesky.xsns.jp/"><img alt="しぇいぷすきー管理人によるサーバーの紹介投稿" src="/img/released-service/shapesky-released.png" /></a></template>
+						<p>形状変化や物品化をテーマに、変化ネタが好きな人同士で作品の話ができるMisskeyサーバーを運営しています。</p>
 						<a class="a-link" href="https://shapesky.xsns.jp/notes/amjmrltqe16b00k8">「shapesky(しぇいぷすきー)」について</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>【BOOTH】公式グッズ販売中！</template><template #images><img alt="画像が見つかりませんでした" src="/img/goods/booth-pr.png" /></template>
+					<list-comp wide-style>
+						<template #title>【BOOTH】公式グッズ販売中！</template><template #images><img alt="公式カタログ、クッション、キーホルダーが並ぶBOOTHのショップ" src="/img/goods/booth-pr.png" /></template>
+						<p>「ナンバーテールズ」の公式カタログやコアフォルダクッション、アクリルキーホルダーを、百花繚乱研究所のBOOTHで取り扱っています。</p>
 						<a class="a-link" href="https://radiann-kswg.booth.pm/">BOOTH</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「運命線探偵78」公式タロット<br />制作メンバー募集中！</template><template #images><a href="http://fateline-investigator78.com/news/official-tarot_recruitment.html">
-								<img alt="画像が見つかりませんでした" src="/img/news_contents/fl-investigator78/pr_officialCard_202510.png" /></a></template>
+					<list-comp wide-style>
+						<template #title>「運命線探偵78」公式タロット<br />制作メンバー募集中！</template><template #images><a href="https://www.fateline-investigator78.com/news/official-tarot_recruitment.html">
+								<img alt="運命線探偵78のカード見本と制作メンバーの紹介" src="/img/news_contents/fl-investigator78/pr_officialCard_202510.png" /></a></template>
+						<p>小アルカナのカードに登場するキャラクターの立ち絵を描く方を募集しています。募集ページでは、背景や小道具の3D制作についても案内しています。</p>
+						<a class="a-link" href="https://www.fateline-investigator78.com/news/official-tarot_recruitment.html">募集要項と応募窓口</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>公式LINEスタンプ販売中！</template><template #images><img alt="画像が見つかりませんでした" src="/img/news_contents/numbertales/linesticker_available.png" /></template>
+					<list-comp wide-style>
+						<template #title>公式LINEスタンプ販売中！</template><template #images><img alt="コアフォルダ形態のキャラクターを並べたスタンプ見本" src="/img/news_contents/numbertales/linesticker_available.png" /></template>
+						<p>「ナンバーテールズ」のキャラクターが、まん丸のコアフォルダ形態で登場するスタンプです。作者ページから各巻の絵柄を見られます。</p>
 						<a class="a-link" href="https://store.line.me/stickershop/author/4775486/ja">百花繚乱研究所 作者ページ</a>
 						<a class="a-link" href="https://line.me/S/shop/sticker/author/4775486/ja">百花繚乱研究所(LINEアプリ)</a>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp wide-style>
 						<template #title>7400シリーズIC収集中</template>
-						<template #images><img alt="画像が見つかりませんでした" src="/img/engineering/7400series-collection.JPG" /></template>
+						<template #images><img alt="収集した7400シリーズのロジックIC" src="/img/engineering/7400series-collection.JPG" /></template>
+						<p>集めたロジックICを型番ごとに整理し、回路の機能や対応するデータシートを台帳に記録しています。収集したICを動かす自作CPUの設計も進めています。</p>
 						<a class="a-link" href="https://github.com/radiann-kswg/7400SeriesCollection">7400シリーズIC収集台帳用リポジトリ</a>
 						<a class="a-link" href="https://github.com/radiann-kswg/7400SeriesProcessor">コレクター向け自作CPU「7400sCCP8」リポジトリ</a>
 					</list-comp>
 				</div>
 				<h2>2026年</h2>
 				<div class="list0">
-					<list-comp wide-style="true">
+					<list-comp wide-style id="ulanzi-tc002-for-jp-engineers">
+						<template #title>「Ulanzi TC002」向け独自OS<br />「Ulanzi TC002 for-JPEngineers」公開</template>
+						<template #images>
+							<a href="https://github.com/radiann-kswg/Ulanzi_TC002_for-JPEngineers"><img alt="Ulanzi TC002の52×16ドット画面に表示する時刻、世界時計、天気、タイマーなどの見本" src="/img/engineering/ulanzi-tc002-for-jp-engineers.png" loading="lazy" /></a>
+						</template>
+						<p>Ulanzi TC002向けの非公式プロジェクトとして、時計本体のLinuxで動くアプリとWindows用の設定アプリを開発しています。52×16ドットの画面には、日本語の時刻や世界時計・タイマー・より詳細な地域の天気を表示できます。</p>
+						<p>時計単体では、ポモドーロで作業と休憩の残り時間を確認できます。Windowsアプリで接続先や地点を設定すると、天気やGitHub・ClaudeといったAIエージェントの開発情報も時計に表示できます。</p>
+						<a class="a-link" href="https://github.com/radiann-kswg/Ulanzi_TC002_for-JPEngineers">時計アプリの導入と使い方</a>
+					</list-comp>
+					<list-comp wide-style>
 						<template #title>「7400sCCP8」制作プロジェクト開始！</template>
-						<template #images><a href="https://github.com/radiann-kswg/7400SeriesProcessor"><img alt="画像が見つかりませんでした" src="/img/engineering/7400sccp8.png" /></a></template>
+						<template #images><a href="https://github.com/radiann-kswg/7400SeriesProcessor"><img alt="自作8ビットCPU「7400sCCP8」の設計資料" src="/img/engineering/7400sccp8.png" /></a></template>
+						<p>集めた7400シリーズのICに演算や記憶を担わせる、自作8ビットCPUの設計を始めました。新しい型番を入手したら、そのICを使う基板だけを差し替えられる構成です。</p>
+						<a class="a-link" href="https://github.com/radiann-kswg/7400SeriesProcessor">CPUの構成と設計資料</a>
 						<a class="a-link" href="https://github.com/radiann-kswg/7400SeriesCollection">7400シリーズIC収集台帳用リポジトリ</a>
-						</list-comp>
-						<list-comp wide-style="true">
+					</list-comp>
+					<list-comp id="shapechange-shader" wide-style>
+						<template #title>形状変化シェーダー<br />「ShapeChange Shader」</template>
+						<template #images>
+							<img src="/img/engineering/shapechange-shader-preview.png" alt="Unityで自作の検証用メッシュを描画した比較。変形前、立方体、球、円柱。" loading="lazy" />
+						</template>
+						<p>Windows版VRChat向けに、アバターを立方体・球・円柱・平面など16種類の形に変えるシェーダーを制作しました。比較画像は、同じ自作メッシュをUnityで描画した変形前と3つの形です。</p>
+						<p>Unityのセットアップツールがアバターを複製するので、元のモデルやマテリアルを保ったまま形を試せます。複製では、アクセサリーを変形に含めるか、元の形のまま追従させるかも選べます。</p>
+						<a class="a-link" href="https://radiann-kswg.github.io/VRCShader_ShapeChange/">VCC・ALCOMへの追加</a>
+						<a class="a-link" href="https://github.com/radiann-kswg/VRCShader_ShapeChange">セットアップと形状一覧</a>
+					</list-comp>
+					<list-comp wide-style>
 						<template #title>観賞用ボール抽選機<br />「RouletteSphereChaser」公開</template>
-						<template #images><a href="https://github.com/radiann-kswg/RouletteSphereChaser"><img alt="画像が見つかりませんでした" src="/img/engineering/roulette-sphere-chaser.png" /></a></template>
+						<template #images><a href="https://github.com/radiann-kswg/RouletteSphereChaser"><img alt="ボールが循環する観賞用抽選機のコース" src="/img/engineering/roulette-sphere-chaser.png" /></a></template>
+						<p>Blenderでコースを造形し、Unityでボールがリフトやらせん状のレールを巡る抽選機を制作しました。全景を眺めたり、カメラで一球を追いかけたりできます。</p>
 						<a class="a-link" href="https://github.com/radiann-kswg/LotteryBallKit">ボール素材リポジトリ</a>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp id="actor-explorer-trpg" wide-style>
+						<template #title>AIゲームマスターと遊べるソロTRPG<br />「ActorExplorerTRPG」公開</template>
+						<template #images><a href="https://github.com/radiann-kswg/ActorExplorerTRPG"><img alt="ActorExplorerTRPGのプレイ画面。判定カードとゲームマスターのメッセージを表示。" src="/img/engineering/actor-explorer-trpg.png" loading="lazy" /></a></template>
+						<p>Unity 6で、AIをゲームマスターにして一人で遊べるTRPGのフレームワークです。ダイスや成否の判定はゲーム側が処理し、ルールブックとシナリオはJSONで書き換えられます。</p>
+						<a class="a-link" href="https://github.com/radiann-kswg/ActorExplorerTRPG">GitHubリポジトリ</a>
+					</list-comp>
+					<list-comp wide-style>
 						<template #title>クォータニオン図解ページ<br />「クォータニオン儀」公開</template>
-						<template #images><a href="https://unityroom.com/games/quaternion-globe"><img alt="画像が見つかりませんでした" src="/img/engineering/quaternion-viewer.png" /></a></template>
+						<template #images><a href="https://unityroom.com/games/quaternion-globe"><img alt="サイコロの向きと四元数の各成分を並べたクォータニオン儀" src="/img/engineering/quaternion-viewer.png" /></a></template>
+						<p>3D空間での回転を表すクォータニオン（四元数）を、サイコロと地球儀を使って学べるUnity作品です。儀を回すと、サイコロの向きと画面に表示される数値の変化を見比べられます。</p>
 						<a class="a-link" href="https://github.com/radiann-kswg/QuaternionViewer">GitHubリポジトリ</a>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp wide-style>
 						<template #title>占星術エンジン<br />「アストロスコープ」公開</template>
-						<template #images><a href="https://unityroom.com/games/astroscope-the-astrology-engine"><img alt="画像が見つかりませんでした" src="/img/engineering/astroscope.png" /></a></template>
+						<template #images><a href="https://unityroom.com/games/astroscope-the-astrology-engine"><img alt="十二星座の円盤に天体を配置したアストロスコープ" src="/img/engineering/astroscope.png" /></a></template>
+						<p>西洋占星術と東洋占星術の占術盤を切り替えられるツールをUnityで制作しました。西洋占星術の画面では、日時を進めたり戻したりして、十二星座に対する天体の位置を確かめられます。</p>
 						<a class="a-link" href="https://github.com/radiann-kswg/Astroscope">GitHubリポジトリ</a>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp wide-style>
 						<template #title>「獣爾騎兵」<br />公式サイト公開！</template>
-						<template #images><a href="https://www.shauer-riders.com/"><img alt="画像が見つかりませんでした" src="/img/news_contents/shouar-riders/pr_officialSite-SAR.png" /></a></template>
+						<template #images><a href="https://www.shauer-riders.com/"><img alt="獣爾騎兵のあらすじを掲載した公式サイト" src="/img/news_contents/shouar-riders/pr_officialSite-SAR.png" /></a></template>
+						<p>干支をモチーフにした年賀イラストとショートストーリーから展開する作品です。公式サイトにあらすじ、登場キャラクター、ショートストーリーをまとめました。</p>
 						<a class="a-link" href="https://misskey.io/clips/a6crkgiku0a808ms">Misskey.io(更新停止)</a>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp wide-style>
 						<template #title>メンタルケアBot<br />「100(モモ)」リリース！</template>
-						<template #images><img alt="画像が見つかりませんでした" src="/img/released-service/misskey-bot/aphrnts100-bot.png" /></template>
+						<template #images><img alt="メンタルケアBot「100(モモ)」の告知" src="/img/released-service/misskey-bot/aphrnts100-bot.png" /></template>
+						<p>「ナンバーテールズ」のモモと、Claudeで日々の振り返りや思考整理ができるプロンプトを公開しました。気分や睡眠、創作の進み具合を会話の中で記録できます。また、Misskey Botとしても利用可能です。</p>
 						<a class="a-link" href="https://github.com/radiann-kswg/APHRNTs_100">使い方など</a>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp wide-style>
 						<template #title>「運命線探偵78」<br />公式サイト公開！</template>
-						<template #images><a href="https://www.fateline-investigator78.com/"><img alt="画像が見つかりませんでした" src="/img/news_contents/fl-investigator78/pr_officialSite-FLI.png" /></a></template>
+						<template #images><a href="https://www.fateline-investigator78.com/"><img alt="公式タロットカードの見本を掲載した運命線探偵78の公式サイト" src="/img/news_contents/fl-investigator78/pr_officialSite-FLI.png" /></a></template>
+						<p>タロット78枚をモチーフにしたキャラクターを紹介する公式サイトを開設しました。作品のあらすじと、公式タロットカードの制作状況を掲載しています。</p>
 						<a class="a-link" href="https://misskey.io/clips/af350tstmjey05xd">Misskey.io(更新停止)</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>公式LINEスタンプ新発売！</template><template #images><img src="/img/news_contents/numbertales/linesticker_available-02.png" alt="画像が見つかりませんでした" /></template>
+					<list-comp wide-style>
+						<template #title>公式LINEスタンプ新発売！</template><template #images><img src="/img/news_contents/numbertales/linesticker_available-02.png" alt="言葉を添えた「まんまるスタンプ」Vol.0.2の絵柄" /></template>
+						<p>「まんまるスタンプ」にVol.0.2とVol.1.2が加わりました。Vol.0.2では、コアフォルダ形態のキャラクターに「かわいい」などの言葉を添えています。</p>
 						<a class="a-link" href="https://store.line.me/stickershop/product/34345021/ja">まんまるスタンプVol.0.2</a>
 						<a class="a-link" href="https://line.me/S/sticker/34345021/?lang=ja&utm_source=gnsh_stickerDetail">まんまるスタンプVol.0.2(LINEアプリ)</a>
 						<a class="a-link" href="https://store.line.me/stickershop/product/34647492/ja">まんまるスタンプVol.1.2</a>
 						<a class="a-link" href="https://line.me/S/sticker/34647492/?lang=ja&utm_source=gnsh_stickerDetail">まんまるスタンプVol.1.2(LINEアプリ)</a>
-					</list-comp><list-comp wide-style="true">
-						<template #title>「shapesky(しぇいぷすきー)」<br />開設！</template><template #images><a href="https://shapesky.xsns.jp/"><img alt="画像が見つかりませんでした" src="/img/released-service/shapesky-released.png" /></a></template>
+					</list-comp>
+					<list-comp wide-style>
+						<template #title>「shapesky(しぇいぷすきー)」<br />開設！</template><template #images><a href="https://shapesky.xsns.jp/"><img alt="しぇいぷすきー開設時の管理人の投稿" src="/img/released-service/shapesky-released.png" /></a></template>
+						<p>形状変化や物品化について話せる場として「しぇいぷすきー」を開設しました。開設時の管理人の投稿には、サーバーを立ち上げたきっかけを記しています。</p>
 						<a class="a-link" href="https://shapesky.xsns.jp/notes/amjmrltqe16b00k8">「shapesky(しぇいぷすきー)」について</a>
 					</list-comp>
 				</div>
 				<h2>2025年</h2>
 				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「みすけっと2025」サークル参加！</template><template #images><img alt="画像が見つかりませんでした" src="/img/creators-ivent/missket2025.png" /></template>
+					<list-comp wide-style>
+						<template #title>「みすけっと2025」サークル参加！</template><template #images><img alt="みすけっと2025の百花繚乱研究所のお品書き" src="/img/creators-ivent/missket2025.png" /></template>
+						<p>オンライン即売会に百花繚乱研究所として参加しました。「ナンバーテールズ」のグッズをお品書きに載せ、「運命線探偵78」の公式タロットカードの制作進捗も頒布しました。</p>
+						<a class="a-link" href="https://radiann-kswg.booth.pm/items/7646689">公式タロットの制作進捗 Vol.1</a>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp wide-style>
 						<template #title>7400シリーズIC収集はじめました</template>
-						<template #images><img alt="画像が見つかりませんでした" src="/img/engineering/7400series-collection.JPG" /></template>
+						<template #images><img alt="収集を始めた7400シリーズのロジックIC" src="/img/engineering/7400series-collection.JPG" /></template>
+						<p>電子回路で論理演算を担う7400シリーズのICを集め始めました。手に入れたチップを型番で整理するため、収集台帳を作りました。</p>
 						<a class="a-link" href="https://github.com/radiann-kswg/7400SeriesCollection">7400シリーズIC収集台帳用リポジトリ</a>
-						</list-comp>
-						<list-comp wide-style="true">
-						<template #title>「運命線探偵78」企画始動！</template><template #images><img alt="画像が見つかりませんでした" src="/img/news_contents/fl-investigator78/pr_officialCard_202510.png" /></template>
-						<a class="a-link" href="http://fateline-investigator78.com/news/official-tarot_recruitment.html">タロットカード制作メンバー募集情報</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「ナンバーテールズ」制作４周年！</template><template #images><img alt="画像が見つかりませんでした" src="/img/news_special/numbertales/aniv_4th.png" /></template>
+					<list-comp wide-style>
+						<template #title>「運命線探偵78」企画始動！</template><template #images><img alt="公式タロットの制作を告知した企画始動時の画像" src="/img/news_contents/fl-investigator78/pr_officialCard_202510.png" /></template>
+						<p>タロットカード78枚を題材にした一次創作を始動しました。2025年秋には「愚者」や「魔術師」などのキャラクターを描いたカードと、裏面のデザインを進捗第1弾として頒布しました。</p>
+						<a class="a-link" href="https://www.fateline-investigator78.com/news/official-tarot_recruitment.html">タロットカード制作メンバー募集情報</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「Bubble Club」制作に参加！</template><template #images><img alt="画像が見つかりませんでした" src="/img/creators-ivent/ggj2025.png" /></template>
+					<list-comp wide-style>
+						<template #title>「ナンバーテールズ」制作４周年！</template><template #images><img alt="青い髪のキャラクターを描いた制作4周年の記念イラスト" src="/img/news_special/numbertales/aniv_4th.png" /></template>
+						<p>数字をモチーフにしたキャラクターの制作が4周年を迎えました。節目に合わせて、「4」をモチーフにしたキャラクター「4(モチ)」の記念イラストを制作しました。</p>
+					</list-comp>
+					<list-comp wide-style>
+						<template #title>「Bubble Crab」制作に参加！</template><template #images><img alt="海中でカニが泡を渡る「Bubble Crab」のプレイ画面" src="/img/creators-ivent/ggj2025.png" /></template>
+						<p>Global Game Jam 2025の瀬戸内会場で制作に参加しました。海底にいるカニを左右に動かし、立ちのぼる泡に次々と飛び乗って海面を目指すジャンプアクションです。</p>
 						<a class="a-link" href="https://unityroom.com/games/bubblecrab">unityroom</a>
 						<a class="a-link" href="https://globalgamejam.org/games/2025/bubble-crab-9">GlobalGameJam 2025(瀬戸内会場)</a>
 					</list-comp>
 				</div>
 				<h2>2024年</h2>
 				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「ナンバーテールズ」公式<br />キャラスト「93(クミ)編」始動！</template><template #images><img alt="画像が見つかりませんでした" src="/img/news_contents/numbertales/novel_chrst-nts93.png" /></template>
-						<a class="a-link" href="/character-stories/character93-story.html">詳細はこちら</a>
+					<list-comp wide-style>
+						<template #title>「ナンバーテールズ」公式<br />キャラスト「93(クミ)編」始動！</template><template #images><img alt="93(クミ)が登場するサウンドノベルの会話画面" src="/img/news_contents/numbertales/novel_chrst-nts93.png" /></template>
+						<p>公式キャラクターストーリーの第1編として、ナンバーテールズの「93(クミ)」についての物語を執筆しています。ラジアンが小説版の執筆とサウンドノベル版のシナリオ・キャラクターデザインを担当しています。</p>
+						<a class="a-link" href="https://www.numbertales-radiann.com/character-stories/character93-story.html">「93(クミ)編」の作品紹介</a>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp wide-style>
 						<template #title>公式LINEスタンプ発売！</template>
-						<template #images><img src="/img/news_contents/numbertales/linesticker_available.png" alt="画像が見つかりませんでした" /></template>
+						<template #images><img src="/img/news_contents/numbertales/linesticker_available.png" alt="コアフォルダ形態を描いた「まんまるスタンプ」Vol.0の見本" /></template>
+						<p>「ナンバーテールズのまんまるスタンプ」Vol.0とVol.1を発売しました。コアフォルダ形態になったキャラクターの表情やしぐさを、LINEで使えるスタンプにしました。</p>
 						<a class="a-link" href="https://store.line.me/stickershop/product/26787953/ja">まんまるスタンプVol.0</a>
 						<a class="a-link" href="https://line.me/S/sticker/26787953/?lang=ja&utm_source=gnsh_stickerDetail">まんまるスタンプVol.0(LINEアプリ)</a>
 						<a class="a-link" href="https://store.line.me/stickershop/product/30377990/ja">まんまるスタンプVol.1</a>
@@ -189,56 +239,67 @@
 				</div>
 				<h2>2023年</h2>
 				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「コミケマーケット103」参戦！</template><template #images><img alt="画像が見つかりませんでした" src="/img/creators-ivent/c103.JPG" /></template>
+					<list-comp wide-style>
+						<template #title>「コミックマーケット103」参戦！</template><template #images><img alt="冊子やグッズを並べたコミックマーケット103のサークルスペース" src="/img/creators-ivent/c103.JPG" /></template>
+						<p>コミックマーケット103に百花繚乱研究所として参加しました。当日のスペースでは「ナンバーテールズ」のキャラクターの冊子やキーホルダーなどのグッズを頒布しました。</p>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「SanukiXGame2023」にて<br />公式ミニゲーム出展！</template><template #images><img alt="画像が見つかりませんでした" src="/img/creators-ivent/sxg2023.jpg" /></template>
-						<a class="a-link" href="http://www.numbertales-radiann.com/news/news202311_sxg2023.html">詳細はこちら</a>
+					<list-comp wide-style>
+						<template #title>「SanukiXGame2023」にて<br />公式ミニゲーム出展！</template><template #images><img alt="試遊用PCと1(ハジメ)の等身大ぬいぐるみを置いた出展卓" src="/img/creators-ivent/sxg2023.jpg" /></template>
+						<p>11月26日、香川県高松市で公式ミニゲーム「±ナンバーテールズ」を出展しました。会場では公式グッズを頒布し、1(ハジメ)の等身大ぬいぐるみも展示しました。</p>
+						<a class="a-link" href="https://www.numbertales-radiann.com/news/news202311_sxg2023.html">詳細はこちら</a>
 						<a class="a-link" href="https://showxguys.org/">SXG公式ページ</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「1(ハジメ)」コアフォルダ<br />等身大ぬいぐるみを購入！</template><template #images><img alt="画像が見つかりませんでした" src="/img/goods/numbertales/IMG_1713.JPG" /></template>
+					<list-comp wide-style>
+						<template #title>「1(ハジメ)」コアフォルダ<br />等身大ぬいぐるみを購入！</template><template #images><img alt="コアフォルダ形態の1(ハジメ)の等身大ぬいぐるみ" src="/img/goods/numbertales/IMG_1713.JPG" /></template>
+						<p>「ナンバーテールズ」の1(ハジメ)がコアフォルダ形態になった姿を、等身大のぬいぐるみとして迎えました。同年のSanukiXGameでは、試遊卓の隣に展示しました。</p>
 						<a class="a-link" href="https://x.com/zeroone001/status/1707578851335999997">製作会社様 御宣伝(Twitter/X)</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「EX-CLEAN」制作に参加！</template><template #images><img alt="画像が見つかりませんでした" src="/img/creators-ivent/saikyo-gj2023.png" /></template>
+					<list-comp wide-style>
+						<template #title>「EX-CLEAN」制作に参加！</template><template #images><img alt="最強ゲームジャム2023・チームC作品「EX-CLEAN」のタイトル画面" src="/img/creators-ivent/saikyo-gj2023.png" /></template>
+						<p>香川の「最強ゲームジャム2023」でチームCの作品制作に参加しました。2023年4月30日にunityroomで公開したゲームを、ブラウザーで遊べます。</p>
 						<a class="a-link" href="https://unityroom.com/games/saikyogamejam2023c">unityroom</a>
 						<a class="a-link" href="https://www.e-topia-kagawa.jp/lecture/saikyo_game_jam_2023/">最強ゲームジャム2023(香川)</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「ナンバーテールズ」制作２周年！</template><template #images><img alt="画像が見つかりませんでした" src="/img/news_special/numbertales/aniv_2nd.png" /></template>
+					<list-comp wide-style>
+						<template #title>「ナンバーテールズ」制作２周年！</template><template #images><img alt="1と2の数字を衣装に入れたキャラクターの2周年記念イラスト" src="/img/news_special/numbertales/aniv_2nd.png" /></template>
+						<p>2周年の記念に、「2」をモチーフにしたキャラクター「2(ツグ)」と「バイナ」の記念イラストを制作しました。</p>
 						<a class="a-link" href="https://www.pixiv.net/artworks/106943484">pixiv</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>スクエア缶バッヂ(全4種)限定販売中！</template><template #images><img alt="画像が見つかりませんでした" src="/img/goods/numbertales/fanbox-only/canvas_11db327cb7.png" /></template>
+					<list-comp wide-style>
+						<template #title>スクエア缶バッヂ(全4種)限定販売中！</template><template #images><img alt="コアフォルダ形態のキャラクターを描いたスクエア缶バッヂの見本" src="/img/goods/numbertales/fanbox-only/canvas_11db327cb7.png" /></template>
+						<p>「ナンバーテールズ」のキャラクターを描いた四角い缶バッヂを全4種制作しました。絵柄と頒布の案内をpixivFANBOXの支援者向け記事にまとめました。</p>
 						<a class="a-link" href="https://radiann-kswg.fanbox.cc/posts/5164175">詳細はこちら(FANBOX有償記事)</a>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>pixivFANBOX開設！</template><template #images><img alt="画像が見つかりませんでした" src="/img/news_special/pixivFANBOX-000.png" /></template>
+					<list-comp wide-style>
+						<template #title>pixivFANBOX開設！</template><template #images><img alt="開設の挨拶と支援者向け特典を予告したFANBOXの記事" src="/img/news_special/pixivFANBOX-000.png" /></template>
+						<p>FANBOX開設に伴い、記事番号「#000」として運営の抱負を公開しました。</p>
 						<a class="a-link" href="https://radiann-kswg.fanbox.cc/">pixivFANBOXトップ</a>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp wide-style>
 						<template #title>「Monkey-to-Human」制作に参加！</template>
-						<template #images><img alt="画像が見つかりませんでした" src="/img/creators-ivent/ggj2023.png" /></template>
+						<template #images><img alt="サルとバナナが盤面に並ぶ2D版のプレイ画面" src="/img/creators-ivent/ggj2023.png" /></template>
+						<p>Global Game Jam 2023の瀬戸内会場で制作に参加しました。サルが食料を補給しながら文明の発達に関わるアイテムを集め、人間への進化を目指すゲームです。さらに限界まで進化すると…？</p>
 						<a class="a-link" href="https://unityroom.com/games/monkey-to-human-2d">unityroom</a>
 						<a class="a-link" href="https://v3.globalgamejam.org/2023/games/monky-human-%E3%83%A2%E3%83%B3%E3%82%AD%E3%83%BC%E3%83%BB%E3%83%88%E3%82%A5%E3%83%BB%E3%83%92%E3%83%A5%E3%83%BC%E3%83%9E%E3%83%B3-2">GlobalGameJam 2023(瀬戸内会場)</a>
 					</list-comp>
 				</div>
 				<h2>～2022年</h2>
 				<div class="list0">
-					<list-comp wide-style="true">
-						<template #title>「SanukiXGame2022」にて<br />公式ミニゲーム出展！</template><template #images><img alt="画像が見つかりませんでした" src="/img/creators-ivent/sxg2022.jpg" /></template>
-						<a class="a-link" href="http://www.numbertales-radiann.com/news/news202206_sxg2022.html">詳細はこちら</a>
+					<list-comp wide-style>
+						<template #title>「SanukiXGame2022」にて<br />公式ミニゲーム出展！</template><template #images><img alt="試遊機と案内を並べたSanukiXGame2022の出展卓" src="/img/creators-ivent/sxg2022.jpg" /></template>
+						<p>2022年7月10日、香川県高松市で「±ナンバーテールズ」を出展しました。Global Game Jam 瀬戸内会場で制作した「±5」のリメイクで、当日は公式グッズの展示とプレゼント企画も行いました。</p>
+						<a class="a-link" href="https://www.numbertales-radiann.com/news/news202206_sxg2022.html">詳細はこちら</a>
 						<a class="a-link" href="https://showxguys.org/">SXG公式ページ</a>
 						<a-links-sxg2022></a-links-sxg2022>
 					</list-comp>
-					<list-comp wide-style="true">
+					<list-comp wide-style>
 						<template #title>「ナンバーテールズ」<br />公式サイト公開！</template>
-						<template #images><a href="https://www.numbertales-radiann.com/"><img alt="画像が見つかりませんでした" src="/img/news_contents/numbertales/pr_officialSite-NTs.png" /></a></template>
+						<template #images><a href="https://www.numbertales-radiann.com/"><img alt="ナンバーテールズ公式サイトの紹介画像" src="/img/news_contents/numbertales/pr_officialSite-NTs.png" /></a></template>
+						<p>1から99までの数字をキャラクターにする企画を、公式サイトにまとめました。数字を取り入れた衣装や尻尾のデザイン、人型とコアフォルダの2つの形態を紹介しています。</p>
 					</list-comp>
-					<list-comp wide-style="true">
-						<template #title>「孤高の剣聖」制作に参加！</template><template #images><img alt="画像が見つかりませんでした" src="/img/creators-ivent/gjtakahashi2021.png" /></template>
+					<list-comp wide-style>
+						<template #title>「孤高の剣聖」制作に参加！</template><template #images><img alt="一騎打ちに挑む「孤高の剣聖」のタイトル画面" src="/img/creators-ivent/gjtakahashi2021.png" /></template>
+						<p>2021年のゲームジャム高梁にプログラマーとして参加しました。相手の動きや周囲の物音・気配を手がかりに、一騎打ちで刀を振るう一瞬を見極める2Dアクションです。</p>
 						<a class="a-link" href="https://unityroom.com/games/kokounokensei">unityroom</a>
 						<a class="a-link" href="https://gjtakahashi.okayamaunity.com/gjtakahashi2021/">ゲームジャム高梁2021</a>
 					</list-comp>
@@ -254,7 +315,7 @@
 		<div class="contact-container">
 			<h2 class="contact-title">お問い合わせ</h2>
 			<p class="contact-description">
-				創作活動やお仕事のご依頼、その他ご質問がございましたらお気軽にお問い合わせください。
+				創作活動やご依頼、その他ご質問がございましたらお気軽にお問い合わせください。
 			</p>
 			<contact-form></contact-form>
 		</div>

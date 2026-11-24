@@ -10,8 +10,9 @@ const listComponent = {
   },
   template: `<div class="list1">
 		<div class="list2">
-		<h3 v-bind:class="{'h3-wide': titleStyleIsWide}"><slot name="title">(Non Title)</slot></h3><br />
-		<slot name="images"></slot><br /><p><slot></slot></p>
+		<h3 v-bind:class="{'h3-wide': titleStyleIsWide}"><slot name="title">(Non Title)</slot></h3>
+		<div v-if="$slots.images" class="activity-media"><slot name="images"></slot></div>
+		<div class="activity-copy"><slot></slot></div>
 		</div>
 	</div>`,
   data() {

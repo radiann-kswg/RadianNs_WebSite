@@ -86,20 +86,7 @@ RadianNs_WebSite/
 
 #### カラーパレット
 
-```sass
-// メインカラー（参考サイトに合わせた紺色・白色基調）
-$primary-navy: #1a2332      // プライマリー紺色
-$secondary-navy: #2c3e50    // セカンダリー紺色
-$light-navy: #34495e        // ライト紺色
-$accent-blue: #3498db       // アクセントブルー
-$light-blue: #5dade2       // ライトブルー
-$pure-white: #ffffff       // 純白
-$light-gray: #f8f9fa       // ライトグレー
-$medium-gray: #6c757d      // ミディアムグレー
-$border-gray: #dee2e6      // ボーダーグレー
-$text-dark: #2c3e50        // テキストダーク
-$shadow-color: rgba(26, 35, 50, 0.1) // 影色
-```
+サイトは計測コンソールをイメージしたライトテーマを使用する。薄い青灰色の方眼に白いパネルを置き、見出しには紺、リンクと操作部には青緑を用いる。具体的な色値は `stylesheet.sass` 冒頭のパレットで管理する。
 
 #### レスポンシブデザイン
 
@@ -110,11 +97,9 @@ $responsive-smallsize: 480px   // スマートフォンブレークポイント
 
 #### デザインガイドライン
 
-- **モダンなカードデザイン**: `@include card-style`
-- **グラデーション**: `linear-gradient(135deg, ...)`
-- **影**: `box-shadow: 0 8px 25px $shadow-color`
-- **ホバーエフェクト**: `transform: translateY(-5px)`
-- **アニメーション**: `transition: all 0.3s ease`
+- 活動カードには `@include card-style` を使い、細い罫線と小さな角丸で区切る。
+- 年見出しには等幅書体を使う。カードの画像と本文は広い画面で左右に、タブレット幅以下で縦に並べる。
+- 操作できる要素はホバー時の色とキーボードフォーカスの輪郭で識別できるようにする。
 
 ### JavaScript
 
