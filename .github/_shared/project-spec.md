@@ -213,9 +213,10 @@ const componentName = {
 ### GitHub Pages 設定
 
 1. リポジトリの Settings > Pages
-2. Source: Deploy from a branch
-3. Branch: main または develop
-4. Folder: / (root)
+2. Source: GitHub Actions
+3. `develop` への push（または手動実行）で `.github/workflows/static.yml` がデプロイする
+4. ワークフローは `build`（アーティファクト作成）と `deploy`（公開）の 2 ジョブ構成。1 ジョブにまとめるとアップロード直後のアーティファクト一覧取得が間に合わず失敗することがあるため、分けたままにする
+5. 公開対象はリポジトリ直下一式。`actions/upload-pages-artifact` が `.git`・`.github` とドットで始まるファイル・フォルダを除外する
 
 ### 自動ビルド
 
